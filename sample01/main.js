@@ -14,6 +14,7 @@ function setup() {
     // 1번 씬: "후회" 텍스트(중상단), "Start" 버튼(아래)
     scene.addObject(1, new SceneObject("후회", null, width / 2 - 200, height / 2 - 200, 400, 100));
     scene.addObject(1, new SceneButton("Start", null, width / 2 - 100, height / 2, 200, 80, () => {
+        guideWave = new GuideWaveButton(width / 2 -100, height / 2, 30);
         sceneManager.setSceneNumber(2);
     }));
 
@@ -22,6 +23,7 @@ function setup() {
 
     // 2번 씬: "Credit" 버튼
     scene.addObject(2, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80, () => {
+        guideWave = new GuideWaveButton(width / 2 - 100, height / 2, 30);
         sceneManager.setSceneNumber(3);
         creditsY = height; // 크레딧 시작 위치 초기화
         loop();

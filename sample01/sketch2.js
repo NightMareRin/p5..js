@@ -13,6 +13,7 @@ let creditsText = [
   "The End"
 ];
 
+let guideWave;
 let creditsY;        // 시작 y 위치
 let scrollSpeed = 1; // 기본 속도
 
@@ -28,6 +29,7 @@ function draw() {
   background(0);
 
   showCredits();
+  guideWave.updateAndDraw();
 }
 
 function showCredits() {
@@ -48,4 +50,71 @@ function showCredits() {
   if (lastY < 0) {
     noLoop(); // 더 이상 그릴 필요 없으면 멈춤
   }
+}
+
+class GuideWaveButton {
+    constructor(x, y, size) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.visible = false;
+        this.wave = null;
+        this.started = false;
+    }
+
+    updateAndDraw() {
+        if (this.visible) {
+            noStroke();
+            fill(255, 0, 0, 150);
+            ellipse(this.x, this.y, this.size);
+        }
+
+        if (this.wave) {
+            this.wave.update();
+            this.wave.draw();
+
+            if (this.wave.isFinished()) {
+                this.wave = null;
+            }
+        }
+    }
+
+    mousePressed(mx, my) {
+        if (this.visible && dist(mx, my, this.x, this.y) < this.size / 2) {
+            this.visible = false;
+            this.started = true;
+            this.wave = new Wave(this.x, this.y);
+        }
+    }
+
+    isFinished() {
+        return this.wave === null && this.started;
+    }
+}
+
+class Wave {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = 0;
+        this.strokeWeight = 2;
+        this.alpha = 255;
+    }
+
+    update() {
+        this.radius += 2;
+        this.alpha -= 3;
+    }
+
+    draw() {
+        if (this.radius < 20) return;
+        noFill();
+        stroke(255, 150, 50, this.alpha);
+        strokeWeight(this.strokeWeight);
+        ellipse(this.x, this.y, this.radius * 2);
+    }
+
+    isFinished() {
+        return this.alpha <= 0;
+    }
 }
