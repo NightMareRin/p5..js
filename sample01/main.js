@@ -4,6 +4,12 @@ function preload() {
     spriteSheet2 = loadImage('../image01/assets/Screenshot_20250602_134447_Samsung Notes.png');
     spriteSheet3 = loadImage('../image01/assets/Screenshot_20250602_134707_Samsung Notes.png');
     spriteSheet4 = loadImage('../image01/assets/Screenshot_20250602_134841_Samsung Notes.png');
+    
+    spriteSheet6 = loadImage('../image01/assets/Screenshot_20250602_135024_Samsung Notes.png');
+    spriteSheet7 = loadImage('../image01/assets/Screenshot_20250602_135054_Samsung Notes.png');
+    spriteSheet8 = loadImage('../image01/assets/Screenshot_20250602_135329_Samsung Notes.png');
+    spriteSheet9 = loadImage('../image01/assets/Screenshot_20250602_135606_Samsung Notes.png');
+    spriteSheet10 = loadImage('../image01/assets/Screenshot_20250602_135837_Samsung Notes.png');
 }
 
 function setup() {
@@ -17,6 +23,10 @@ function setup() {
     let boyS5, girlS5, friendMs1, boy2S5, girl2S5, friendMs2;
     let boy3S5, girl3S5, friendBoyHs1, friendBoyHs2
     let friendGirlHs1, friendGirlHs2, boy4S5, girl4S5, friend;
+    let boyS6, girlS7,girl2S7,girl3S7,girl4S7,girl5S7;
+    let boyS8, boy2S8, boy3S8, boy4S8;
+    let boyS9, boy2S9, boy3S9, letter;
+    let boyS10, boy2S10, boy3S10;
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
