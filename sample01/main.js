@@ -10,6 +10,11 @@ function preload() {
     spriteSheet8 = loadImage('../image01/assets/Screenshot_20250602_135329_Samsung Notes.png');
     spriteSheet9 = loadImage('../image01/assets/Screenshot_20250602_135606_Samsung Notes.png');
     spriteSheet10 = loadImage('../image01/assets/Screenshot_20250602_135837_Samsung Notes.png');
+
+    // 손, 뒷통수 등 추가 파일입니다
+    spriteSheet11 = loadImage('../image01/assets/1000002436.png');
+    spriteSheet12 = loadImage('../image01/assets/1000002437.png');
+    
 }
 
 function setup() {
@@ -21,8 +26,13 @@ function setup() {
 
     let boyS2, boy2S2, girlS2, girl2S2, boyS4, boy2S4, girlS3;
     let boyS5, girlS5, friendMs1, boy2S5, girl2S5, friendMs2;
-    let boy3S5, girl3S5, friendBoyHs1, friendBoyHs2
+    let boy3S5, girl3S5, friendBoyHs1, friendBoyHs2;
     let friendGirlHs1, friendGirlHs2, boy4S5, girl4S5, friend;
+
+    let boyBack6, boyArm6, boy6;
+    let boyArm3
+    
+    //여기서부터 지후님 파트
     let boyS6, girlS7,girl2S7,girl3S7,girl4S7,girl5S7;
     let boyS8, boy2S8, boy3S8, boy4S8;
     let boyS9, boy2S9, boy3S9, letter;
@@ -56,7 +66,13 @@ function setup() {
     friendGirlHs2 = spriteSheet3.get(256, 0, 256, 512);      
     boy4S5 = spriteSheet3.get(0, 512, 256, 512);          
     girl4S5 = spriteSheet3.get(256, 512, 256, 512);     
-    friend = spriteSheet3.get(512, 512, 256, 512);     
+    friend = spriteSheet3.get(512, 512, 256, 512);   
+
+    boyBack6 = spriteSheet12.get(240, 40, 250, 180); 
+    boyArm6 = spriteSheet12.get(250, 900, 230, 850);
+    boy6 = spriteSheet6.get(40, 0, 690, 940);
+
+    boyArm3 = spriteSheet11.get(250, 20, 500, 1660);
 
 
     // 1번 씬: "후회" 텍스트(중상단), "Start" 버튼(아래)
@@ -74,7 +90,8 @@ function setup() {
 
     // 3번 씬:여자아이 뒷모습 바라봄
     scene.addObject(3, new SceneObject("girlS3", girlS3, 400, 100, girlS3.width, girlS3.height));
-    
+    scene.addObject(3, new SceneObject("boyArm3", boyArm3, 700, 100, boyArm3.width, boyArm3.height));
+
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
     scene.addObject(4, new SceneObject("boyS4", boyS4, 100, 100, boyS4.width, boyS4.height));
@@ -102,7 +119,11 @@ function setup() {
     scene.addObject(5, new SceneObject("girl4S5", girl4S5, 400, 550, girl4S5.width, girl4S5.height));
     scene.addObject(5, new SceneObject("friend", friend, 750, 550, friend.width, friend.height));
 
-    
+    // 6번 씬:주인공의 회상
+    scene.addObject(6, new SceneObject("boyBack6", boyBack6, 300, 200, boyBack6.width, boyBack6.height));
+    scene.addObject(6, new SceneObject("boyArm6", boyArm6, 600, 400, boyArm6.width, boyArm6.height));
+    scene.addObject(6, new SceneObject("boy6", boy6, 400, 150, boy6.width, boy6.height));
+        
 
     
 
