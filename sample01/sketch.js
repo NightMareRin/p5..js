@@ -2,6 +2,9 @@ let sceneManager;
 
 
 function mousePressed() {
+    if (guideWave) {
+        guideWave.mousePressed(mouseX, mouseY);
+    }
     sceneManager.scene.handleMousePressed(mouseX, mouseY, sceneManager.sceneNumber);
 }
 

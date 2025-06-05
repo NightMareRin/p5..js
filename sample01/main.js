@@ -43,6 +43,9 @@ function draw() {
     }
     else {
         sceneManager.display();
+        if(guideWave) {
+            guideWave.updateAndDraw();
+        }
     }
     fill(255);
     noStroke();
