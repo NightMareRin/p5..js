@@ -193,22 +193,10 @@ function setup() {
     scene.addObject(10, new SceneObject("boyS10", boyS10, 100, 100, boyS10.width, boyS10.height));
     scene.addObject(10, new SceneObject("boy2S10", boy2S10, 400, 100, boy2S10.width, boy2S10.height));
     scene.addObject(10, new SceneObject("boy3S10", boy3S10, 700, 100, boy3S10.width, boy3S10.height));
-    scene.addObject(10, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
+    scene.addObject(10, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(11);
-}));
-
-    
-
-    
-
-
-
-    // 11번 씬: "Credit" 버튼
-    scene.addObject(11, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80, () => {
-        sceneManager.setSceneNumber(3);
-        creditsY = height; // 크레딧 시작 위치 초기화
         loop();
-    }));
+}));
 
     sceneManager.setScene(scene);
     sceneManager.setSceneNumber(1);
