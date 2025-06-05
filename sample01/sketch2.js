@@ -18,7 +18,6 @@ let creditsY;        // 시작 y 위치
 let scrollSpeed = 1; // 기본 속도
 
 function setup() {
-  createCanvas(600, 400);
   textAlign(CENTER, CENTER);
   textSize(24);
   fill(255);

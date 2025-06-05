@@ -40,15 +40,16 @@ function setup() {
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
-    //spriteSheet
-    let boyS = spriteSheet.get(20, 30, 210, 320);
-    let boy2S2 = spriteSheet.get(260, 30, 210, 320);
-    let girlS2 = spriteSheet.get(20, 370, 240, 220);
-    let girl2S2 = spriteSheet.get(280, 370, 200, 220);
-    let boyS4 = spriteSheet.get(10, 620, 160, 380);
-    let boy2S4 = spriteSheet.get(190, 620, 160, 380);
-    let girlS3 = spriteSheet.get(370, 620, 180, 380);
+    boyS2 = spriteSheet.get(0, 0, 256, 413);
+    boy2S2 = spriteSheet.get(256, 0, 256, 413);
+    girlS2 = spriteSheet.get(0, 413, 256, 413);
+    girl2S2 = spriteSheet.get(256, 413, 256, 413);
+
+    girlS3 = spriteSheet.get(512, 826, 256, 512);
     
+    boyS4 = spriteSheet.get(0, 826, 256, 512);
+    boy2S4 = spriteSheet.get(256, 826, 256, 512);
+
     boyS5 = spriteSheet2.get(0, 0, 256, 384);
     girlS5 = spriteSheet2.get(256, 0, 256, 384);
     friendMs1 = spriteSheet2.get(512, 0, 256, 384);
