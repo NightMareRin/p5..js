@@ -41,7 +41,7 @@ function setup() {
     img = sourceImage.get(0, 0, width/2, height/2);
 
     //spriteSheet
-    let boyS = spriteSheet.get(20, 30, 210, 320);
+    let boyS2 = spriteSheet.get(20, 30, 210, 320);
     let boy2S2 = spriteSheet.get(260, 30, 210, 320);
     let girlS2 = spriteSheet.get(20, 370, 240, 220);
     let girl2S2 = spriteSheet.get(280, 370, 200, 220);
