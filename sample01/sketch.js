@@ -124,9 +124,13 @@ class SceneObject {
 }
 
 class SceneButton extends SceneObject {
-  constructor(name, img, x, y, w, h, onClick) {
+  constructor(name, img, x, y, w, h, onClick, delay = 0) {
     super(name, img, x, y, w, h);
     this.onClick = onClick;
+    this.delay = delay;
+    // GuideWaveButton 인스턴스 사용
+    this.guide = new GuideWaveButton(this.x + this.w / 2, this.y + this.h / 2, Math.min(this.w, this.h) * 0.8);
+    this.guide.visible = true; // 버튼 생성 시 가이드 표시
   }
 
   display() {
@@ -135,12 +139,21 @@ class SceneButton extends SceneObject {
     } else {
       super.display();
     }
+    // 가이드/파동 효과 그리기
+    if (this.guide) {
+      this.guide.updateAndDraw();
+    }
   }
 
   handleClick(mx, my) {
-    if (mx > this.x && mx < this.x + this.w &&
-        my > this.y && my < this.y + this.h) {
-      this.onClick();
+    // 가이드가 보일 때만 클릭 허용
+    if (this.guide && this.guide.visible && dist(mx, my, this.guide.x, this.guide.y) < this.guide.size / 2) {
+      this.guide.mousePressed(mx, my); // 가이드 숨기고 wave 시작
+      if (this.delay > 0) {
+        setTimeout(() => this.onClick(), this.delay);
+      } else {
+        this.onClick();
+      }
     }
   }
 }

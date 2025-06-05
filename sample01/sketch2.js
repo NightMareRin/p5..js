@@ -55,14 +55,20 @@ class GuideWaveButton {
     constructor(x, y, size) {
         this.x = x;
         this.y = y;
+        this.baseSize = size;
         this.size = size;
         this.visible = false;
         this.wave = null;
         this.started = false;
+        this._pulseT = random(TWO_PI); // 진동 시작위치 랜덤
     }
 
     updateAndDraw() {
+        // 자연스러운 진동 효과
         if (this.visible) {
+            this._pulseT += 0.07; // 진동 속도 (값이 클수록 빠름)
+            // 진폭 10~20px, baseSize 기준으로 부드럽게 변화
+            this.size = this.baseSize + sin(this._pulseT) * (this.baseSize * 0.15);
             noStroke();
             fill(255, 0, 0, 150);
             ellipse(this.x, this.y, this.size);
@@ -96,13 +102,13 @@ class Wave {
         this.x = x;
         this.y = y;
         this.radius = 0;
-        this.strokeWeight = 2;
+        this.strokeWeight = 12; // 더 두껍게
         this.alpha = 255;
     }
 
     update() {
-        this.radius += 2;
-        this.alpha -= 3;
+        this.radius += 8; // 더 빠르게 커짐
+        this.alpha -= 6;  // 더 빠르게 사라짐
     }
 
     draw() {

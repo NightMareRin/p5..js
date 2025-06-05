@@ -101,9 +101,15 @@ function setup() {
     // 1번 씬: "후회" 텍스트(중상단), "Start" 버튼(아래)
     scene.addObject(1, new SceneObject("후회", null, width / 2 - 200, height / 2 - 200, 400, 100));
     scene.addObject(1, new SceneButton("Start", null, width / 2 - 100, height / 2, 200, 80, () => {
-        guideWave = new GuideWaveButton(width / 2 -100, height / 2, 30);
+
+
+
+
+
+
+        
         sceneManager.setSceneNumber(2);
-    }));
+    }, 500));
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 100, boyS2.width, boyS2.height));
@@ -113,14 +119,14 @@ function setup() {
     scene.addObject(2, new SceneObject("girl2S2", girl2S2, 700, 100, girl2S2.width, girl2S2.height));
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(3);
-}));
+}, 1000))
 
     // 3번 씬:여자아이 뒷모습 바라봄
     scene.addObject(3, new SceneObject("girlS3", girlS3, 400, 100, girlS3.width, girlS3.height));
     scene.addObject(3, new SceneObject("boyArm3", boyArm3, 700, 100, boyArm3.width, boyArm3.height));
     scene.addObject(3, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(4);
-}));
+}, 1000));
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
@@ -128,7 +134,7 @@ function setup() {
     scene.addObject(4, new SceneObject("boy2S4", boy2S4, 100, 100, boy2S4.width, boy2S4.height));
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(5);
-}));
+}, 1000));
     
     // 5번 씬: 성장 몽타주
     scene.addObject(5, new SceneObject("boyS5", boyS5, 100, 100, boyS5.width, boyS5.height));
@@ -153,7 +159,7 @@ function setup() {
     scene.addObject(5, new SceneObject("friend", friend, 750, 550, friend.width, friend.height));
     scene.addObject(5, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(6);
-}));
+}, 1000));
 
     // 6번 씬:주인공의 회상
     scene.addObject(6, new SceneObject("boyBack6", boyBack6, 300, 200, boyBack6.width, boyBack6.height));
@@ -163,7 +169,7 @@ function setup() {
     scene.addObject(6, new SceneObject("boyS6", boyS6, 100, 100, boyS6.width, boyS6.height));
     scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(7);
-}));
+}, 1000));
     // 7번 씬: if? 여자 주인공 학생 시절
     scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 100, girlS7.width, girlS7.height));
     scene.addObject(7, new SceneObject("girl2S7", girl2S7, 400, 100, girl2S7.width, girl2S7.height));
@@ -172,7 +178,7 @@ function setup() {
     scene.addObject(7, new SceneObject("girl5S7", girl5S7, 400, 500, girl5S7.width, girl5S7.height));
     scene.addObject(7, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(8);
-}));
+}, 1000));
     // 8번 씬: if? 남자 주인공 학생 시절
     scene.addObject(8, new SceneObject("boyS8", boyS8, 100, 100, boyS8.width, boyS8.height));
     scene.addObject(8, new SceneObject("boy2S8", boy2S8, 400, 100, boy2S8.width, boy2S8.height));
@@ -180,7 +186,7 @@ function setup() {
     scene.addObject(8, new SceneObject("boy4S8", boy4S8, 100, 500, boy4S8.width, boy4S8.height));
     scene.addObject(8, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(9);
-}));
+}, 1000));
     // 9번 씬: if? 편지를 전달했다면?
     scene.addObject(9, new SceneObject("boyS9", boyS9, 100, 100, boyS9.width, boyS9.height));
     scene.addObject(9, new SceneObject("boy2S9", boy2S9, 400, 100, boy2S9.width, boy2S9.height));
@@ -188,7 +194,7 @@ function setup() {
     scene.addObject(9, new SceneObject("letter", letter, 100, 500, letter.width, letter.height));
     scene.addObject(9, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(10);
-}));
+}, 1000));
     // 10번 씬: 현재로 돌아온 남자
     scene.addObject(10, new SceneObject("boyS10", boyS10, 100, 100, boyS10.width, boyS10.height));
     scene.addObject(10, new SceneObject("boy2S10", boy2S10, 400, 100, boy2S10.width, boy2S10.height));
@@ -196,7 +202,7 @@ function setup() {
     scene.addObject(10, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(11);
         loop();
-}));
+}, 1000));
 
     sceneManager.setScene(scene);
     sceneManager.setSceneNumber(1);
@@ -212,9 +218,6 @@ function draw() {
     }
     else {
         sceneManager.display();
-        if(guideWave) {
-            guideWave.updateAndDraw();
-        }
     }
     fill(255);
     noStroke();
