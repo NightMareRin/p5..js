@@ -157,40 +157,4 @@ class SceneButton extends SceneObject {
     }
   }
 }
-class SceneDraggable extends SceneObject {
-  constructor(name, img, x, y, w, h) {
-    super(name, img, x, y, w, h);
-    this.dragging = false;
-    this.offsetX = 0;
-    this.offsetY = 0;
-  }
-
-  display() {
-    if (this.img) {
-      image(this.img, this.x, this.y, this.w, this.h);
-    } else {
-      super.display();
-    }
-  }
-
-  pressed(mx, my) {
-    if (mx > this.x && mx < this.x + this.w &&
-        my > this.y && my < this.y + this.h) {
-      this.dragging = true;
-      this.offsetX = this.x - mx;
-      this.offsetY = this.y - my;
-    }
-  }
-
-  released() {
-    this.dragging = false;
-  }
-
-  dragged(mx, my) {
-    if (this.dragging) {
-      this.x = mx + this.offsetX;
-      this.y = my + this.offsetY;
-    }
-  }
-}
 
