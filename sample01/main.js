@@ -64,11 +64,11 @@ function setup() {
     friendBoyHs1 = spriteSheet3.get(60, 880, 280, 600);  
     friendBoyHs2 = spriteSheet3.get(430, 880, 280, 600);
 //img
-    friendGirlHs1 = spriteSheet3.get(60, 100, 240, 620);        
-    friendGirlHs2 = spriteSheet3.get(610, 100, 240, 620);      
-    boy4S5 = spriteSheet3.get(40, 1140, 240, 720);          
-    girl4S5 = spriteSheet3.get(420, 1140, 240, 720);     
-    friend = spriteSheet3.get(850, 1140, 180, 720);   
+    friendGirlHs1 = spriteSheet4.get(60, 100, 240, 620);        
+    friendGirlHs2 = spriteSheet4.get(610, 100, 240, 620);      
+    boy4S5 = spriteSheet4.get(40, 1140, 240, 720);          
+    girl4S5 = spriteSheet4.get(420, 1140, 240, 720);     
+    friend = spriteSheet4.get(850, 1140, 180, 720);   
 
     boyBack6 = spriteSheet12.get(240, 40, 250, 180); 
     boyArm6 = spriteSheet12.get(250, 900, 230, 850);
