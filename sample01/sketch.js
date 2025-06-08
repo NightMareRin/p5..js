@@ -193,3 +193,4 @@ class SceneDraggable extends SceneObject {
     }
   }
 }
+
