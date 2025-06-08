@@ -49,24 +49,25 @@ function setup() {
     
     boyS4 = spriteSheet.get(50, 680, 180, 370);
     boy2S4 = spriteSheet.get(280, 680, 180, 370);
+//S5
+    boyS5 = spriteSheet2.get(40, 60, 200, 390);
+    girlS5 = spriteSheet2.get(285, 60, 180, 390);
+    friendMs1 = spriteSheet2.get(520, 30, 180, 480);
+    boy2S5 = spriteSheet2.get(40, 770, 210, 460);
+    girl2S5 = spriteSheet2.get(285, 770, 180, 460);
+    friendMs2 = spriteSheet2.get(520, 770, 180, 460);
+//img
 
-    boyS5 = spriteSheet2.get(0, 0, 256, 384);
-    girlS5 = spriteSheet2.get(256, 0, 256, 384);
-    friendMs1 = spriteSheet2.get(512, 0, 256, 384);
-    boy2S5 = spriteSheet2.get(0, 768, 256, 512);
-    girl2S5 = spriteSheet2.get(256, 768, 256, 512);
-    friendMs2 = spriteSheet2.get(512, 768, 256, 512);
-
-    boy3S5 = spriteSheet3.get(0, 0, 256, 384);  
-    girl3S5 = spriteSheet3.get(256, 0, 256, 384); 
-    friendBoyHs1 = spriteSheet3.get(512, 0, 256, 384);  
-    friendBoyHs2 = spriteSheet3.get(0, 768, 256, 512);
-
-    friendGirlHs1 = spriteSheet3.get(0, 0, 256, 512);        
-    friendGirlHs2 = spriteSheet3.get(256, 0, 256, 512);      
-    boy4S5 = spriteSheet3.get(0, 512, 256, 512);          
-    girl4S5 = spriteSheet3.get(256, 512, 256, 512);     
-    friend = spriteSheet3.get(512, 512, 256, 512);   
+    boy3S5 = spriteSheet3.get(60, 60, 260, 660);  
+    girl3S5 = spriteSheet3.get(440, 60, 260, 660); 
+    friendBoyHs1 = spriteSheet3.get(60, 880, 280, 600);  
+    friendBoyHs2 = spriteSheet3.get(430, 880, 280, 600);
+//img
+    friendGirlHs1 = spriteSheet3.get(60, 100, 240, 620);        
+    friendGirlHs2 = spriteSheet3.get(610, 100, 240, 620);      
+    boy4S5 = spriteSheet3.get(40, 1140, 240, 720);          
+    girl4S5 = spriteSheet3.get(420, 1140, 240, 720);     
+    friend = spriteSheet3.get(850, 1140, 180, 720);   
 
     boyBack6 = spriteSheet12.get(240, 40, 250, 180); 
     boyArm6 = spriteSheet12.get(250, 900, 230, 850);
