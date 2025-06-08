@@ -112,9 +112,9 @@ function setup() {
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 0, 0, 300, 325));
-    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 900, 100, 300, 325));
+    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 900, 0, 300, 325));
 
-    scene.addObject(2, new SceneObject("girlS2", girlS2, 300, 500, 300, 325));
+    scene.addObject(2, new SceneObject("girlS2", girlS2, 0, 500, 300, 325));
     scene.addObject(2, new SceneObject("girl2S2", girl2S2, 900, 500, 300, 325));
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(3);
