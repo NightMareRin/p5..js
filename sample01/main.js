@@ -129,7 +129,7 @@ function setup() {
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
     scene.addObject(4, new SceneObject("boyS4", boyS4, 100, 100, boyS4.width, boyS4.height));
-    scene.addObject(4, new SceneObject("boy2S4", boy2S4, 100, 100, boy2S4.width, boy2S4.height));
+    scene.addObject(4, new SceneObject("boy2S4", boy2S4, 800, 100, boy2S4.width, boy2S4.height));
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(5);
     }, 1000));
