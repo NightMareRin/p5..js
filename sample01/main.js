@@ -40,10 +40,10 @@ function setup() {
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
-    boyS2 = spriteSheet.get(40, 30, 220, 310);
-    boy2S2 = spriteSheet.get(400, 30, 220, 310);
-    girlS2 = spriteSheet.get(40, 360, 220, 250);
-    girl2S2 = spriteSheet.get(400, 360, 220, 250);
+    boyS2 = spriteSheet.get(0, 0, 300, 325);
+    boy2S2 = spriteSheet.get(300, 0, 760, 325);
+    girlS2 = spriteSheet.get(0, 325, 300, 650);
+    girl2S2 = spriteSheet.get(300, 325, 760, 650);
 
     girlS3 = spriteSheet.get(510, 680, 180, 370);
     
