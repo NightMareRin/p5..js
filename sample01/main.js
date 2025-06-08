@@ -42,14 +42,14 @@ function setup() {
 
     boyS2 = spriteSheet.get(0, 0, 300, 325);
     boy2S2 = spriteSheet.get(300, 0,360, 325);
-    girlS2 = spriteSheet.get(0, 325, 760, 650);
-    girl2S2 = spriteSheet.get(300, 325, 760, 650);
+    girlS2 = spriteSheet.get(0, 325, 360, 325);
+    girl2S2 = spriteSheet.get(300, 325, 360, 325);
 
     girlS3 = spriteSheet.get(530, 700, 238, 370);
     boyArm3 = spriteSheet11.get(0, 0, 768, 1680);
     
-    boyS4 = spriteSheet.get(20, 700, 160, 370);
-    boy2S4 = spriteSheet.get(270, 700, 160, 370);
+    boyS4 = spriteSheet.get(0, 700, 200, 370);
+    boy2S4 = spriteSheet.get(200, 700, 400, 370);
 //S5
     boyS5 = spriteSheet2.get(40, 60, 200, 390);
     girlS5 = spriteSheet2.get(285, 60, 180, 390);
