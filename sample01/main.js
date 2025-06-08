@@ -33,7 +33,7 @@ function setup() {
     let boyArm3
     
     //여기서부터 지후님 파트
-    let boyS6, girlS7,girl2S7,girl3S7,girl4S7,girl5S7;
+    let girlS7,girl2S7,girl3S7,girl4S7,girl5S7;
     let boyS8, boy2S8, boy3S8, boy4S8;
     let boyS9, boy2S9, boy3S9, letter;
     let boyS10, boy2S10, boy3S10;
@@ -74,26 +74,26 @@ function setup() {
 
     boyArm3 = spriteSheet11.get(250, 20, 500, 1660);
 // 이지후
-    boyS6 = spriteSheet6.get(0, 0, 256, 384);
-    girlS7 = spriteSheet7.get(0, 0, 256, 384);
-    girl2S7 = spriteSheet7.get(0, 0, 256, 384);
-    girl3S7 = spriteSheet7.get(0, 0, 256, 384);
-    girl4S7 = spriteSheet7.get(0, 0, 256, 384);
-    girl5S7 = spriteSheet7.get(0, 0, 256, 384);
+   
+    girlS7 = spriteSheet7.get(0, 0, 424, 1344);
+    girl2S7 = spriteSheet7.get(424, 0, 424, 1344);
+    girl3S7 = spriteSheet7.get(848, 0, 424, 1344);
+    girl4S7 = spriteSheet7.get(0, 1344, 424, 1344);
+    girl5S7 = spriteSheet7.get(848, 1344, 424, 1344);
 
-    boyS8 = spriteSheet8.get(0, 0, 256, 384);
-    boy2S8 = spriteSheet8.get(0, 0, 256, 384);
-    boy3S8 = spriteSheet8.get(0, 0, 256, 384);
-    boy4S8 = spriteSheet8.get(0, 0, 256, 384);
+    boyS8 = spriteSheet8.get(0, 0, 515.5, 1360.5);
+    boy2S8 = spriteSheet8.get(515.5, 0, 550, 1360.5);
+    boy3S8 = spriteSheet8.get(0, 1360.5, 515.5, 1360.5);
+    boy4S8 = spriteSheet8.get(515.5, 1360.5 , 550, 1360.5);
 
-    boyS9 = spriteSheet6.get(0, 0, 256, 384);
-    boy2S9 = spriteSheet9.get(0, 0, 256, 384);
-    boy3S9 = spriteSheet9.get(0, 0, 256, 384);
-    letter = spriteSheet9.get(0, 0, 256, 384);
+    boyS9 = spriteSheet9.get(0, 0, 630, 1280);
+    boy2S9 = spriteSheet9.get(630, 0, 645, 1280);
+    boy3S9 = spriteSheet9.get(0, 1350, 1270, 1330);
+    letter = spriteSheet9.get(0, 1300, 150, 100);
 
-    boyS10 = spriteSheet10.get(0, 0, 256, 384);
-    boy2S10 = spriteSheet10.get(0, 0, 256, 384);
-    boy3S10 = spriteSheet10.get(0, 0, 256, 384);
+    boyS10 = spriteSheet10.get(0, 0, 1170, 800);
+    boy2S10 = spriteSheet10.get(0, 910, 545, 1804);
+    boy3S10 = spriteSheet10.get(585, 910, 585, 1804);
 
     
 
@@ -166,39 +166,38 @@ function setup() {
     scene.addObject(6, new SceneObject("boyArm6", boyArm6, 600, 400, boyArm6.width, boyArm6.height));
     scene.addObject(6, new SceneObject("boy6", boy6, 400, 150, boy6.width, boy6.height));
 
-    scene.addObject(6, new SceneObject("boyS6", boyS6, 100, 100, boyS6.width, boyS6.height));
+   
     scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(7);
 }, 1000));
     // 7번 씬: if? 여자 주인공 학생 시절
-    scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 100, girlS7.width, girlS7.height));
-    scene.addObject(7, new SceneObject("girl2S7", girl2S7, 400, 100, girl2S7.width, girl2S7.height));
-    scene.addObject(7, new SceneObject("girl3S7", girl3S7, 700, 100, girl3S7.width, girl3S7.height));
-    scene.addObject(7, new SceneObject("girl4S7", girl4S7, 100, 500, girl4S7.width, girl4S7.height));
-    scene.addObject(7, new SceneObject("girl5S7", girl5S7, 400, 500, girl5S7.width, girl5S7.height));
+    scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 60, 180, 450));
+    scene.addObject(7, new SceneObject("girl2S7", girl2S7, 500, 60, 180, 450));
+    scene.addObject(7, new SceneObject("girl3S7", girl3S7, 900, 60, 180, 450));
+    scene.addObject(7, new SceneObject("girl4S7", girl4S7, 200, 450, 180, 450));
+    scene.addObject(7, new SceneObject("girl5S7", girl5S7, 800, 450, 180, 450));
     scene.addObject(7, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(8);
 }, 1000));
     // 8번 씬: if? 남자 주인공 학생 시절
-    scene.addObject(8, new SceneObject("boyS8", boyS8, 100, 100, boyS8.width, boyS8.height));
-    scene.addObject(8, new SceneObject("boy2S8", boy2S8, 400, 100, boy2S8.width, boy2S8.height));
-    scene.addObject(8, new SceneObject("boy3S8", boy3S8, 700, 100, boy3S8.width, boy3S8.height));
-    scene.addObject(8, new SceneObject("boy4S8", boy4S8, 100, 500, boy4S8.width, boy4S8.height));
+    scene.addObject(8, new SceneObject("boyS8", boyS8, 200, 60, 200, 430));
+    scene.addObject(8, new SceneObject("boy2S8", boy2S8, 1000, 60, 200, 420));
+    scene.addObject(8, new SceneObject("boy3S8", boy3S8, 200, 450, 200 , 470));
+    scene.addObject(8, new SceneObject("boy4S8", boy4S8, 1000, 450, 200,470));
     scene.addObject(8, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(9);
-}, 1000));
     // 9번 씬: if? 편지를 전달했다면?
-    scene.addObject(9, new SceneObject("boyS9", boyS9, 100, 100, boyS9.width, boyS9.height));
-    scene.addObject(9, new SceneObject("boy2S9", boy2S9, 400, 100, boy2S9.width, boy2S9.height));
-    scene.addObject(9, new SceneObject("boy3S9", boy3S9, 700, 100, boy3S9.width, boy3S9.height));
-    scene.addObject(9, new SceneObject("letter", letter, 100, 500, letter.width, letter.height));
+    scene.addObject(9, new SceneObject("boyS9", boyS9, 200, 100, 200, 430));
+    scene.addObject(9, new SceneObject("boy2S9", boy2S9, 800, 100, 200, 430));
+    scene.addObject(9, new SceneObject("boy3S9", boy3S9, 600, 450, 400, 450));
+    scene.addObject(9, new SceneObject("letter", letter, 200, 500, 50, 100));
     scene.addObject(9, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(10);
 }, 1000));
     // 10번 씬: 현재로 돌아온 남자
-    scene.addObject(10, new SceneObject("boyS10", boyS10, 100, 100, boyS10.width, boyS10.height));
-    scene.addObject(10, new SceneObject("boy2S10", boy2S10, 400, 100, boy2S10.width, boy2S10.height));
-    scene.addObject(10, new SceneObject("boy3S10", boy3S10, 700, 100, boy3S10.width, boy3S10.height));
+    scene.addObject(10, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
+    scene.addObject(10, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
+    scene.addObject(10, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
     scene.addObject(10, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(11);
         loop();
