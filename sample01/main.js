@@ -100,16 +100,13 @@ function setup() {
 
     // 1번 씬: "후회" 텍스트(중상단), "Start" 버튼(아래)
     scene.addObject(1, new SceneObject("후회", null, width / 2 - 200, height / 2 - 200, 400, 100));
-    scene.addObject(1, new SceneButton("Start", null, width / 2 - 100, height / 2, 200, 80, () => {
-
-
-
-
-
-
-        
-        sceneManager.setSceneNumber(2);
-    }, 500));
+    scene.addObject(1, new SceneButton("Start", null, width / 2 - 100, height / 2, 200, 80, function() {
+        animeManager.add(this, moveRight); // 버튼에 오른쪽 이동 애니메이션 적용
+        animeManager.add(scene.objectByNumber[1][0], moveRight); // "후회" 오브젝트도 이동
+        setTimeout(() => {
+            sceneManager.setSceneNumber(2);
+        }, 500); // 0.5초 후 씬 전환
+    }, 0));
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 100, boyS2.width, boyS2.height));
@@ -142,7 +139,7 @@ function setup() {
     scene.addObject(5, new SceneObject("friendMs1", friendMs1, 700, 100, friendMs1.width, friendMs1.height));
 
     scene.addObject(5, new SceneObject("boy2S5", boy2S5, 100, 500, boy2S5.width, boy2S5.height));
-    scene.addObject(5, new SceneObject("girl2S5", girl2S5, 400, 500, girl2S5.width, girl2S5.height));
+    scene.addObject(5, new SceneObject("girl2S5", girl2S5, 400, 500, girlS5.width, girlS5.height));
     scene.addObject(5, new SceneObject("friendMs2", friendMs2, 700, 500, friendMs2.width, friendMs2.height));
 
     scene.addObject(5, new SceneObject("boy3S5", boy3S5, 100, 100, boy3S5.width, boy3S5.height));
@@ -212,6 +209,8 @@ function setup() {
 
 function draw() {
     background(100);
+
+    animeManager.update();
 
     if (sceneManager.sceneNumber === 11) {
         showCredits();
