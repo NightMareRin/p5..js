@@ -40,10 +40,10 @@ function setup() {
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
-    boyS2 = spriteSheet.get(80, 50, 210, 300);
-    boy2S2 = spriteSheet.get(400, 50, 210, 300);
-    girlS2 = spriteSheet.get(80, 350, 210, 280);
-    girl2S2 = spriteSheet.get(400, 350, 210, 280);
+    boyS2 = spriteSheet.get(40, 30, 220, 310);
+    boy2S2 = spriteSheet.get(400, 30, 220, 310);
+    girlS2 = spriteSheet.get(40, 360, 220, 250);
+    girl2S2 = spriteSheet.get(400, 360, 220, 250);
 
     girlS3 = spriteSheet.get(510, 680, 180, 370);
     
@@ -109,11 +109,11 @@ function setup() {
     }, 0));
 
     // 2번 씬: 7살
-    scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 100, boyS2.width, boyS2.height));
-    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 100, 100, boy2S2.width, boy2S2.height));
+    scene.addObject(2, new SceneObject("boyS2", boyS2, 300, 100, boyS2.width, boyS2.height));
+    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 900, 100, boy2S2.width, boy2S2.height));
 
-    scene.addObject(2, new SceneObject("girlS2", girlS2, 400, 100, girlS2.width, girlS2.height));
-    scene.addObject(2, new SceneObject("girl2S2", girl2S2, 700, 100, girl2S2.width, girl2S2.height));
+    scene.addObject(2, new SceneObject("girlS2", girlS2, 300, 500, girlS2.width, girlS2.height));
+    scene.addObject(2, new SceneObject("girl2S2", girl2S2, 900, 500, girl2S2.width, girl2S2.height));
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(3);
     }, 1000))
