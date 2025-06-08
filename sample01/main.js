@@ -45,7 +45,7 @@ function setup() {
     girlS2 = spriteSheet.get(0, 325, 300, 650);
     girl2S2 = spriteSheet.get(300, 325, 760, 650);
 
-    girlS3 = spriteSheet.get(530, 700, 180, 370);
+    girlS3 = spriteSheet.get(530, 700, 238, 370);
     boyArm3 = spriteSheet11.get(0, 0, 768, 1680);
     
     boyS4 = spriteSheet.get(20, 700, 160, 370);
@@ -121,7 +121,7 @@ function setup() {
     }, 1000))
 
     // 3번 씬:여자아이 뒷모습 바라봄
-    scene.addObject(3, new SceneObject("girlS3", girlS3, 400, 100, girlS3.width, girlS3.height));
+    scene.addObject(3, new SceneObject("girlS3", girlS3, 400, 50, girlS3.width, girlS3.height));
     scene.addObject(3, new SceneObject("boyArm3", boyArm3, 800, 100, boyArm3.width, boyArm3.height));
     scene.addObject(3, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80, () => {
         sceneManager.setSceneNumber(4);
