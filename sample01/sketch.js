@@ -60,7 +60,7 @@ class Scene {
     let objs = this.objectByNumber[sceneNumber];
     if (!objs) return;
     for (let obj of objs) {
-      if (obj.released) obj.release();
+      if (obj.released) obj.released();
     }
   }
 
@@ -161,11 +161,17 @@ class SceneButton extends SceneObject {
   }
 }
 class SceneDraggable extends SceneObject {
-  constructor(name, img, x, y, w, h) {
+  constructor(name, img, x, y, w, h, onDragAction = null, dragDistance = 100, allowedDirection = "right") {
     super(name, img, x, y, w, h);
     this.dragging = false;
     this.offsetX = 0;
     this.offsetY = 0;
+    this.startX = 0;
+    this.startY = 0;
+    this.onDragAction = onDragAction;
+    this.dragDistance = dragDistance;
+    this._dragged = false;
+    this.allowedDirection = allowedDirection; // ← 추가
   }
 
   display() {
@@ -182,17 +188,64 @@ class SceneDraggable extends SceneObject {
       this.dragging = true;
       this.offsetX = this.x - mx;
       this.offsetY = this.y - my;
+      this.startX = mx;
+      this.startY = my;
+      this._dragged = false;
     }
   }
 
   released() {
+    if (this.dragging && !this._dragged) {
+      // 드래그가 충분히 안 됐으면 원위치
+      this.x = this.x;
+      this.y = this.y;
+    }
     this.dragging = false;
   }
 
   dragged(mx, my) {
-    if (this.dragging) {
-      this.x = mx + this.offsetX;
-      this.y = my + this.offsetY;
+    if (!this.dragging) return;
+    // 드래그 방향 및 거리 계산
+    const dx = mx - this.startX;
+    const dy = my - this.startY;
+    const distDragged = dist(mx, my, this.startX, this.startY);
+
+    // 방향별로 거리 체크
+    let valid = false;
+    if (this.allowedDirection === "right" && dx > this.dragDistance && abs(dx) > abs(dy)) valid = true;
+    if (this.allowedDirection === "left" && dx < -this.dragDistance && abs(dx) > abs(dy)) valid = true;
+    if (this.allowedDirection === "down" && dy > this.dragDistance && abs(dy) > abs(dx)) valid = true;
+    if (this.allowedDirection === "up" && dy < -this.dragDistance && abs(dy) > abs(dx)) valid = true;
+
+    if (!this._dragged && valid) {
+      this._dragged = true;
+      this.dragging = false;
+
+      // 부드럽게 이동 애니메이션 (animeManager 필요)
+      let moveAnim = (target => {
+        let frames = 20;
+        let moved = 0;
+        let moveX = 0, moveY = 0;
+        if (this.allowedDirection === "right") moveX = this.dragDistance;
+        if (this.allowedDirection === "left") moveX = -this.dragDistance;
+        if (this.allowedDirection === "down") moveY = this.dragDistance;
+        if (this.allowedDirection === "up") moveY = -this.dragDistance;
+        const startX = target.x, startY = target.y;
+        return function (t) {
+          moved++;
+          t.x = startX + moveX * (moved / frames);
+          t.y = startY + moveY * (moved / frames);
+          if (moved >= frames) {
+            t.x = startX + moveX;
+            t.y = startY + moveY;
+            if (typeof t.onDragAction === "function") t.onDragAction(t.allowedDirection, t);
+            return true;
+          }
+          return false;
+        };
+      })(this);
+
+      animeManager.add(this, moveAnim);
     }
   }
 }

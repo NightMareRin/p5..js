@@ -26,6 +26,7 @@ const animeManager = new AnimeManager();
 
 // 60프레임 동안 오른쪽으로 200px 이동
 function moveRight(target) {
+  console.log("moveRight 실행", target.x);
   if (target._moveFrame === undefined) {
     target._moveFrame = 0;
     target._startX = target.x;
@@ -67,6 +68,18 @@ function scaleUp(target) {
     return true;
   }
   return false;
+}
+
+// 씬 진입 시 애니메이션 등록
+function onSceneEnter(sceneNumber, scene) {
+  if (sceneNumber === 2) {
+    console.log("애니메이션 등록");
+    animeManager.add(scene.objectByNumber[2][0], moveRight);
+  }
+  if (sceneNumber === 5) {
+    
+  }
+  // ... 등등
 }
 
 // 필요하다면 export (ESM 환경에서)
