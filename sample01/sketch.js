@@ -101,13 +101,18 @@ class SceneManager {
 }
 
 class SceneObject {
-  constructor(name, img, x, y, w, h) {
+  constructor(name, img, x, y) {
     this.name = name;
     this.img = img;
     this.x = x;
     this.y = y;
-    this.w = w;
-    this.h = h;
+    if (img) {
+      this.w = img.width;
+      this.h = img.height;
+    } else {
+      this.w = 100;
+      this.h = 100;
+    }
   }
 
   display() {
@@ -126,8 +131,8 @@ class SceneObject {
 }
 
 class SceneButton extends SceneObject {
-  constructor(name, img, x, y, w, h, onClick, delay = 0) {
-    super(name, img, x, y, w, h);
+  constructor(name, img, x, y, onClick, delay = 0) {
+    super(name, img, x, y);
     this.onClick = onClick;
     this.delay = delay;
     this.guide = new GuideWaveButton(this.x + this.w / 2, this.y + this.h / 2, Math.min(this.w, this.h) * 0.8);
@@ -161,8 +166,8 @@ class SceneButton extends SceneObject {
   }
 }
 class SceneDraggable extends SceneObject {
-  constructor(name, img, x, y, w, h, onDragAction = null, dragDistance = 100, allowedDirection = "right") {
-    super(name, img, x, y, w, h);
+  constructor(name, img, x, y, onDragAction = null, dragDistance = 100, allowedDirection = "right") {
+    super(name, img, x, y);
     this.dragging = false;
     this.offsetX = 0;
     this.offsetY = 0;
@@ -171,7 +176,7 @@ class SceneDraggable extends SceneObject {
     this.onDragAction = onDragAction;
     this.dragDistance = dragDistance;
     this._dragged = false;
-    this.allowedDirection = allowedDirection; // ← 추가
+    this.allowedDirection = allowedDirection;
   }
 
   display() {
