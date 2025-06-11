@@ -110,7 +110,7 @@ function onSceneEnter(sceneNumber, scene) {
     newImg: boy2S2,
     frame: 20,
     onFinish: (target) => {
-
+animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
     }
   }));
 
@@ -118,16 +118,31 @@ function onSceneEnter(sceneNumber, scene) {
   animeManager.add(girlS2, t => swapImageOnce(t, {
     newImg: girl2S2,
     frame: 20,
-    onFinish: (target) => {
+    onFinish: (target) => {  
+        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
   
     }
   }));
 }
 
-  if (sceneNumber === 5) {
+  if (sceneNumber === 4) {
+  const boy = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
+  boy.altImg = boy2S4; // 교체 이미지 등록
+
+  animeManager.add(
+    boy,
+    t => swapImageOnce(t, {
+      newImg: t.altImg,
+      frame: 20,
+      onFinish: (target) => {
+        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+      }
+    })
+  );
+}
+
     
   }
-}
 
 function keyPressed() {
   if ((key === 'a' || key === 'A' || keyCode === LEFT_ARROW) && sceneManager.sceneNumber === 7) {
