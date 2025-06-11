@@ -141,8 +141,11 @@ function setup() {
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
-    scene.addObject(4, new SceneObject("boyS4", boyS4, 300, 60, 300, 400));
-    scene.addObject(4, new SceneObject("boy2S4", boy2S4, 700, 60, 300, 400));
+
+     let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
+    boy4.altImg1 = boy2S4;
+    
+    
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(5);
     }, 1000));
