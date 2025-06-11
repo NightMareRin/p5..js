@@ -130,8 +130,7 @@ function onSceneEnter(sceneNumber, scene) {
     newImg: boy2S2,
     frame: 20,
     onFinish: (target) => {
-      // 다음 애니메이션 등록 예시 (필요하다면 moveRight 등으로)
-      animeManager.add(target, moveRight);
+
     }
   }));
 
@@ -140,8 +139,7 @@ function onSceneEnter(sceneNumber, scene) {
     newImg: girl2S2,
     frame: 20,
     onFinish: (target) => {
-      // 다음 애니메이션 등록 예시
-      animeManager.add(target, moveRight);
+  
     }
   }));
 }
