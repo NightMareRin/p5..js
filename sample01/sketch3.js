@@ -145,8 +145,7 @@ function onSceneEnter(sceneNumber, scene) {
     }
   }));
 }
-    animeManager.add(scene.objectByNumber[2][0], moveRight);
-  }
+
   if (sceneNumber === 5) {
     
   }
