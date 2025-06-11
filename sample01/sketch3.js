@@ -81,12 +81,8 @@ function moveLeftWithWalkAnim(target) {
                   img1: t.altImg3,
                   img2: t.altImg4,
                   frame1: 80,
-                  frame2: 80,
-                  onFinish: (t) => {
-                    setTimeout(() => {
-                      sceneManager.setSceneNumber(8);
-                  }, 800);
-                }}))
+                  frame2: 80
+                }))
               }
             }))
         ))
@@ -181,29 +177,25 @@ function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFin
 function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 2) {
    
- const objs = sceneManager.scene.objectByNumber[2];
-    const boy2 = objs.find(o => o.name === "boyS2");
-    const girl2 = objs.find(o => o.name === "girlS2");
+  // boy 캐릭터의 이미지 전환 애니메이션
+  animeManager.add(boyS2, t => swapImageOnce(t, {
+    newImg: boy2S2,
+    frame: 20,
+    onFinish: (target) => {
+animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+    }
+  }));
 
-    // boy 이미지 순차 전환
-    animeManager.add(boy2, t => swapImageOnce(t, {
-      newImg: t.altImg1, // boy2S2
-      frame: 40,
-      onFinish: (target) => {
-       
-      }
-    }));
-
-    // girl 이미지 순차 전환
-    animeManager.add(girl2, t => swapImageOnce(t, {
-      newImg: t.altImg1, // girl2S2
-      frame: 40,
-      onFinish: (target) => {
-        
-    }));
-  }
+  // girl 캐릭터의 이미지 전환 애니메이션
+  animeManager.add(girlS2, t => swapImageOnce(t, {
+    newImg: girl2S2,
+    frame: 20,
+    onFinish: (target) => {  
+        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+  
+    }
+  }));
 }
-
 
   if (sceneNumber === 4) {
   const boy = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
@@ -213,9 +205,9 @@ function onSceneEnter(sceneNumber, scene) {
     boy,
     t => swapImageOnce(t, {
       newImg: t.altImg,
-      frame: 40,
+      frame: 20,
       onFinish: (target) => {
-        
+        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
       }
     })
   );
@@ -262,34 +254,6 @@ if (sceneNumber === 5) {
       }
     }));
   }
-
- if (sceneNumber === 6) {
-    const objs = sceneManager.scene.objectByNumber[6];
-    const boyBackObj = objs.find(o => o.name === "boyBack6");
-    const drawerObj = objs.find(o => o.name === "drawer1");
-
-    // 처음엔 boyBack6, drawer1만 보이게
-    boyBackObj.visible = true;
-    drawerObj.visible = true;
-
-    // boyBack6 → boyArm6
-    animeManager.add(boyBackObj, t => swapImageOnce(t, {
-      newImg: t.altImg1, // boyArm6
-      frame: 40,
-      onFinish: (target) => {
-        // boyArm6 → boy6
-        animeManager.add(target, t2 => swapImageOnce(t2, {
-          newImg: t2.altImg2, // boy6
-          frame: 40
-        }));
-        // drawer1 → drawer2 (동시에 시작)
-        animeManager.add(drawerObj, t3 => swapImageOnce(t3, {
-          newImg: t3.altImg1, // drawer2
-          frame: 40
-        }));
-      }
-    }));
-  }
 }
 
 function keyPressed() {
@@ -299,5 +263,11 @@ function keyPressed() {
   }
   if (key === ' ' || keyCode === 32) {
     if (waitingForSpace) waitingForSpace = 'ready';
+  }
+  if (!isNaN(Number(key)) && key.trim() !== "") {
+    const num = Number(key);
+    if (sceneManager && sceneManager.setSceneNumber) {
+      sceneManager.setSceneNumber(num);
+    }
   }
 }

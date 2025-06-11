@@ -42,6 +42,7 @@ function setup() {
     let boyS8, boy2S8, boy3S8, boy4S8;
     let boyS9, boy2S9, boy3S9, letter;
     let boyS10, boy2S10, boy3S10;
+    let drawer1, drawer2;
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
@@ -117,21 +118,6 @@ function setup() {
             sceneManager.setSceneNumber(2);
         }, 500); // 0.5초 후 씬 전환
     }, 0));
-    scene.addObject(1, new SceneDraggable(
-        "드래그로 넘기기", // 이름
-        null,             // 이미지 (없으면 null)
-        width / 2 - 100,  // x
-        height / 2 + 120, // y (Start 버튼 아래쪽 등 원하는 위치)
-        200,              // w
-        80,               // h
-        (dir, obj) => {   // onDragAction: 오른쪽 드래그 성공 시 실행
-          if (dir === "right") {
-            sceneManager.setSceneNumber(2);
-          }
-        },
-        100,              // dragDistance: 최소 드래그 거리(px)
-        "right"           // allowedDirection: 오른쪽만 허용
-      ));
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 60, 300, 400));
@@ -222,7 +208,7 @@ function setup() {
     }, 1000));
 
     sceneManager.setScene(scene);
-    sceneManager.setSceneNumber(1);
+    sceneManager.setSceneNumber(7);
 
     // 반드시 이 아래에 래핑!
     const originalSetSceneNumber = sceneManager.setSceneNumber.bind(sceneManager);
