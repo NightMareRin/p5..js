@@ -102,10 +102,8 @@ function setup() {
 
     boyS9 = spriteSheet9.get(0, 0, 630, 1280);
     boy2S9 = spriteSheet9.get(630, 0, 645, 1280);
-    boy3S9 = spriteSheet9.get(0, 1350, 1270, 1330);
     letter = spriteSheet9.get(0, 1300, 150, 100);
 
-    boyS10 = spriteSheet10.get(0, 0, 1170, 800);
     boy2S10 = spriteSheet10.get(0, 910, 545, 1804);
     boy3S10 = spriteSheet10.get(585, 910, 585, 1804);
 
@@ -144,8 +142,9 @@ function setup() {
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
-    scene.addObject(4, new SceneObject("boyS4", boyS4, 300, 60, 300, 400));
-    scene.addObject(4, new SceneObject("boy2S4", boy2S4, 700, 60, 300, 400));
+      let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
+   boy4.altImg1 = boy2S4;
+ 
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(5);
     }, 1000));
@@ -196,17 +195,11 @@ function setup() {
     boyWalk.altImg8 = boy2S9;
     scene.addObject(7, boyWalk);
     
-    // scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
-    //     sceneManager.setSceneNumber(8);
-    //     loop();
-    // }, 1000));
-    
     // 10번 씬: 현재로 돌아온 남자
     scene.addObject(8, new SceneObject("room3",room3, 0, 0 , 1600, 900));
-    // scene.addObject(8, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
-    scene.addObject(8, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
-    scene.addObject(8, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
-    // scene.addObject(8, new SceneObject("boy3S9", boy3S9, 1000, 400, 400, 420));
+    let boyObj = new SceneObject("boy2S10", boy2S10, 500, 200, 300, 900);
+    boyObj.altImg = boy3S10;
+    scene.addObject(8, boyObj);
     scene.addObject(8, new SceneObject("letter", letter, 600, 500, 100, 200));
 
     sceneManager.setScene(scene);

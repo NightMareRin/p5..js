@@ -175,6 +175,43 @@ function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFin
   return false;
 }
 
+function shrinkAndSwapAnim(target) {
+  if (target._shrinkFrame === undefined) {
+    target._shrinkFrame = 0;
+    target._swapToggle = false;
+    target._baseW = target.w;
+    target._baseH = target.h;
+    target._imgA = target.img;
+    target._imgB = target.altImg;
+  }
+
+  // 20프레임마다 이미지 교체
+  if (target._shrinkFrame % 20 === 0) {
+    target._swapToggle = !target._swapToggle;
+    target.img = target._swapToggle ? target._imgB : target._imgA;
+  }
+
+  // 점점 작아지게 (최소 40%까지)
+  let shrinkRatio = Math.max(0.2, 1 - target._shrinkFrame * 0.003);
+  target.w = target._baseW * shrinkRatio;
+  target.h = target._baseH * shrinkRatio;
+
+  target._shrinkFrame++;
+
+  // 60프레임(=1초) 동안 반복, 그 이후 멈춤
+  if (shrinkRatio <= 0.4) {
+    target.img = target._imgA;
+    delete target._shrinkFrame;
+    delete target._swapToggle;
+    delete target._baseW;
+    delete target._baseH;
+    delete target._imgA;
+    delete target._imgB;
+    return true;
+  }
+  return false;
+}
+
 // 씬 진입 시 애니메이션 등록
 function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 2) {
@@ -203,7 +240,7 @@ function onSceneEnter(sceneNumber, scene) {
 
   if (sceneNumber === 4) {
   const boy4 = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
-  boy4.altImg1 = boy2S4; // 교체 이미지 등록
+
 
   animeManager.add( boy4,  t => swapImageOnce(t, {
       newImg: t.altImg1,
@@ -281,6 +318,14 @@ if (sceneNumber === 5) {
         }));
       }
     }));
+  }
+
+  if (sceneNumber === 8) {
+    const objs = sceneManager.scene.objectByNumber[8];
+    const boy = objs.find(o => o.name === "boy2S10");
+    if (boy) {
+      animeManager.add(boy, shrinkAndSwapAnim);
+    }
   }
 }
 
