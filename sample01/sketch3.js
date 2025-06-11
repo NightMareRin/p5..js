@@ -174,25 +174,29 @@ function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFin
 function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 2) {
    
-  // boy 캐릭터의 이미지 전환 애니메이션
-  animeManager.add(boyS2, t => swapImageOnce(t, {
-    newImg: boy2S2,
-    frame: 20,
-    onFinish: (target) => {
-animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
-    }
-  }));
+ const objs = sceneManager.scene.objectByNumber[2];
+    const boy2 = objs.find(o => o.name === "boyS2");
+    const girl2 = objs.find(o => o.name === "girlS2");
 
-  // girl 캐릭터의 이미지 전환 애니메이션
-  animeManager.add(girlS2, t => swapImageOnce(t, {
-    newImg: girl2S2,
-    frame: 20,
-    onFinish: (target) => {  
-        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
-  
-    }
-  }));
+    // boy 이미지 순차 전환
+    animeManager.add(boy2, t => swapImageOnce(t, {
+      newImg: t.altImg1, // boy2S2
+      frame: 40,
+      onFinish: (target) => {
+       
+      }
+    }));
+
+    // girl 이미지 순차 전환
+    animeManager.add(girl2, t => swapImageOnce(t, {
+      newImg: t.altImg1, // girl2S2
+      frame: 40,
+      onFinish: (target) => {
+        
+    }));
+  }
 }
+
 
   if (sceneNumber === 4) {
   const boy = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
@@ -202,9 +206,9 @@ animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
     boy,
     t => swapImageOnce(t, {
       newImg: t.altImg,
-      frame: 20,
+      frame: 40,
       onFinish: (target) => {
-        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+        
       }
     })
   );
