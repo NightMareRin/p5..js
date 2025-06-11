@@ -1,4 +1,4 @@
-// AnimeManager 클래스
+let waitingForSpace = false;
 class AnimeManager {
   constructor() {
     this.anims = []; // {target, func, done}
@@ -41,34 +41,6 @@ function moveRight(target) {
   return false;
 }
 
-// 30프레임 동안 투명도 0까지 fade out
-function fadeOut(target) {
-  if (target.alpha === undefined) target.alpha = 255;
-  target.alpha -= 255 / 30;
-  if (target.alpha <= 0) {
-    target.alpha = 0;
-    return true;
-  }
-  return false;
-}
-
-// 40프레임 동안 크기 1.5배로 scale up
-function scaleUp(target) {
-  if (target._scaleFrame === undefined) {
-    target._scaleFrame = 0;
-    target._startScale = target.scale || 1;
-  }
-  target.scale = target._startScale + (target._scaleFrame / 40) * 0.5;
-  target._scaleFrame++;
-  if (target._scaleFrame >= 40) {
-    target.scale = target._startScale + 0.5;
-    delete target._scaleFrame;
-    delete target._startScale;
-    return true;
-  }
-  return false;
-}
-
 function moveLeftWithWalkAnim(target) {
   if (target._moveFrame === undefined) {
     target._moveFrame = 0;
@@ -77,7 +49,7 @@ function moveLeftWithWalkAnim(target) {
     target._imgB = target.altImg;   // 걷기용 다른 이미지 (main.js에서 altImg로 지정)
   }
   // 50프레임마다 이미지 교체
-  if (Math.floor(target._moveFrame / 50) % 5 === 0) target.img = target._imgA;
+  if (Math.floor(target._moveFrame / 50) % 2 === 0) target.img = target._imgA;
   else target.img = target._imgB;
 
   target.x = target._startX - target._moveFrame * 2; // 2px씩 왼쪽 이동
@@ -90,8 +62,16 @@ function moveLeftWithWalkAnim(target) {
     delete target._startX;
     delete target._imgA;
     delete target._imgB;
-    // 다음 애니메이션 등록(필요시)
-    // animeManager.add(target, nextAnimFunc);
+    animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapImageOnce(t, {
+      newImg: t.altImg1,
+      frame: 80,
+      onFinish: (target) => {
+        animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapImageOnce(t, {
+          newImg: t.altImg2,
+          frame: 80
+        }))
+      }
+    }))
     return true;
   }
   return false;
@@ -130,12 +110,11 @@ function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 5) {
     
   }
-  // ... 등등
 }
 
 function keyPressed() {
   if ((key === 'a' || key === 'A' || keyCode === LEFT_ARROW) && sceneManager.sceneNumber === 7) {
     // 캐릭터 오브젝트에 애니메이션 등록
-    animeManager.add(sceneManager.scene.objectByNumber[7][5], moveLeftWithWalkAnim);
+    animeManager.add(sceneManager.scene.objectByNumber[7][1], moveLeftWithWalkAnim);
   }
 }

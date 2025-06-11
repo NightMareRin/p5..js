@@ -86,8 +86,8 @@ function setup() {
 // 이지후
 
     girlS7 = spriteSheet7.get(0, 0, 424, 1344);
-    girl2S7 = spriteSheet7.get(424, 0, 424, 1344);
-    girl3S7 = spriteSheet7.get(848, 0, 424, 1344);
+    girl2S7 = spriteSheet7.get(450, 0, 424, 1344);
+    girl3S7 = spriteSheet7.get(830, 0, 424, 1344);
     girl4S7 = spriteSheet7.get(0, 1344, 424, 1344);
     girl5S7 = spriteSheet7.get(848, 1344, 424, 1344);
 
@@ -195,15 +195,22 @@ function setup() {
     scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(7);
     }, 1000));
+
     // 7, 8, 9번 씬 통합: if?  학생 시절
-    scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 60, 100, 200));
-    scene.addObject(7, new SceneObject("girl2S7", girl2S7, 200, 60, 100, 200));
-    scene.addObject(7, new SceneObject("girl3S7", girl3S7, 300, 60, 100, 200));
-    scene.addObject(7, new SceneObject("girl4S7", girl4S7, 400, 60, 100, 200));
-    scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
+    let girl = new SceneObject("girlS7", girlS7, 400, 100, 300, 600);
+    girl.altImg1 = girl2S7;
+    girl.altImg2 = girl3S7;
+    girl.altImg3 = girl4S7;
+    girl.altImg4 = girl5S7;
+    scene.addObject(7, girl);
+    // scene.addObject(7, new SceneObject("girl2S7", girl2S7, 200, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl3S7", girl3S7, 300, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl4S7", girl4S7, 400, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
+
     
     
-    let boyWalk = new SceneObject("boyS8", boyS8, 1400, 60, 300, 600);
+    let boyWalk = new SceneObject("boyS8", boyS8, 1400, 100, 300, 600);
     boyWalk.altImg = boy2S8;
     scene.addObject(7, boyWalk);
     // scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
