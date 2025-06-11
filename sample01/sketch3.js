@@ -255,6 +255,34 @@ if (sceneNumber === 5) {
       }
     }));
   }
+
+ if (sceneNumber === 6) {
+    const objs = sceneManager.scene.objectByNumber[6];
+    const boyBackObj = objs.find(o => o.name === "boyBack6");
+    const drawerObj = objs.find(o => o.name === "drawer1");
+
+    // 처음엔 boyBack6, drawer1만 보이게
+    boyBackObj.visible = true;
+    drawerObj.visible = true;
+
+    // boyBack6 → boyArm6
+    animeManager.add(boyBackObj, t => swapImageOnce(t, {
+      newImg: t.altImg1, // boyArm6
+      frame: 40,
+      onFinish: (target) => {
+        // boyArm6 → boy6
+        animeManager.add(target, t2 => swapImageOnce(t2, {
+          newImg: t2.altImg2, // boy6
+          frame: 40
+        }));
+        // drawer1 → drawer2 (동시에 시작)
+        animeManager.add(drawerObj, t3 => swapImageOnce(t3, {
+          newImg: t3.altImg1, // drawer2
+          frame: 40
+        }));
+      }
+    }));
+  }
 }
 
 function keyPressed() {
