@@ -135,17 +135,17 @@ function setup() {
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 60, 300, 400));
-    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 900, 60, 400, 400));
+    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 100, 60, 400, 400));
 
-    scene.addObject(2, new SceneObject("girlS2", girlS2, 100, 450, 300, 400));
-    scene.addObject(2, new SceneObject("girl2S2", girl2S2, 900, 450, 300, 400));
+    scene.addObject(2, new SceneObject("girlS2", girlS2, 1200, 60, 300, 400));
+    scene.addObject(2, new SceneObject("girl2S2", girl2S2, 1200, 60, 300, 400));
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(3);
     }, 1000))
 
     // 3번 씬:여자아이 뒷모습 바라봄
     scene.addObject(3, new SceneObject("girlS3", girlS3, 800, 60, 200, 600));
-    scene.addObject(3, new SceneObject("boyArm3", boyArm3, 100, 100, 200, 400));
+    scene.addObject(3, new SceneObject("boyArm3", boyArm3, 1400, 100, 200, 400));
     scene.addObject(3, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(4);
     }, 1000));

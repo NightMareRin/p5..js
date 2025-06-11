@@ -104,9 +104,26 @@ function swapImageOnce(target, {
 // 씬 진입 시 애니메이션 등록
 function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 2) {
-    console.log("애니메이션 등록");
-    animeManager.add(scene.objectByNumber[2][0], moveRight);
-  }
+   
+  // boy 캐릭터의 이미지 전환 애니메이션
+  animeManager.add(boyS2, t => swapImageOnce(t, {
+    newImg: boy2S2,
+    frame: 20,
+    onFinish: (target) => {
+
+    }
+  }));
+
+  // girl 캐릭터의 이미지 전환 애니메이션
+  animeManager.add(girlS2, t => swapImageOnce(t, {
+    newImg: girl2S2,
+    frame: 20,
+    onFinish: (target) => {
+  
+    }
+  }));
+}
+
   if (sceneNumber === 5) {
     
   }
