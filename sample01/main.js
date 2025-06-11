@@ -261,3 +261,4 @@ function draw() {
     textAlign(LEFT, TOP);
     text(`Scene Number: ${sceneManager.sceneNumber}`, 20, 20);    
 }
+
