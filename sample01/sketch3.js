@@ -62,14 +62,29 @@ function moveLeftWithWalkAnim(target) {
     delete target._startX;
     delete target._imgA;
     delete target._imgB;
-    animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapImageOnce(t, {
-      newImg: t.altImg1,
-      frame: 80,
-      onFinish: (target) => {
-        animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapImageOnce(t, {
-          newImg: t.altImg2,
-          frame: 80
-        }))
+    animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapTwoImagesInOrder(t, {
+      img1: t.altImg1,
+      img2: t.altImg2,
+      frame1: 80,
+      frame2: 80,
+      onFinish: (t) => {
+        animeManager.add(sceneManager.scene.objectByNumber[7][1], t => waitForSpaceAndSwap(t,
+          t.altImg5, t.altImg6, 80, 80, (t) => 
+            animeManager.add(t, t => swapTwoImagesInOrder(t, {
+              img1: t.altImg7,
+              img2: t.altImg8,
+              frame1: 80,
+              frame2: 80,
+              onFinish: (t) => {
+                animeManager.add(sceneManager.scene.objectByNumber[7][0], t => swapTwoImagesInOrder(t, {
+                  img1: t.altImg3,
+                  img2: t.altImg4,
+                  frame1: 80,
+                  frame2: 80
+                }))
+              }
+            }))
+        ))
       }
     }))
     return true;
@@ -96,6 +111,60 @@ function swapImageOnce(target, {
     delete target._swapFrame;
     delete target._originalImg;
     if (onFinish) onFinish(target);
+    return true;
+  }
+  return false;
+}
+
+function swapTwoImagesInOrder(target, {
+  img1,
+  img2,
+  frame1 = 30,
+  frame2 = 30,
+  onFinish = null
+}) {
+  // 프레임 변수 강제 초기화
+  if (target._swap2Frame === undefined) {
+    target._swap2Frame = 0;
+    target._originalImg = target.img;
+    target._swappedOnce = false;
+  }
+  target._swap2Frame++;
+
+  if (!target._swappedOnce && target._swap2Frame >= frame1) {
+    target.img = img1;
+    target._swappedOnce = true;
+  }
+
+  if (target._swappedOnce && target._swap2Frame >= frame1 + frame2) {
+    target.img = img2;
+    delete target._swap2Frame;
+    delete target._originalImg;
+    delete target._swappedOnce;
+    if (onFinish) () => onFinish(target);
+    return true;
+  }
+  return false;
+}
+
+function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFinish = null) {
+  if (!waitingForSpace) {
+    waitingForSpace = true;
+    return false; // 아직 끝나지 않음
+  }
+  if (waitingForSpace === 'ready') {
+    waitingForSpace = false;
+    animeManager.add(target, t => swapImageOnce(t, {
+      newImg: img1,
+      frame: frame1,
+      onFinish: (t) => {
+        animeManager.add(t, t2 => swapImageOnce(t2, {
+          newImg: img2,
+          frame: frame2,
+          onFinish
+        }));
+      }
+    }));
     return true;
   }
   return false;
@@ -133,5 +202,8 @@ function keyPressed() {
   if ((key === 'a' || key === 'A' || keyCode === LEFT_ARROW) && sceneManager.sceneNumber === 7) {
     // 캐릭터 오브젝트에 애니메이션 등록
     animeManager.add(sceneManager.scene.objectByNumber[7][1], moveLeftWithWalkAnim);
+  }
+  if (key === ' ' || keyCode === 32) {
+    if (waitingForSpace) waitingForSpace = 'ready';
   }
 }

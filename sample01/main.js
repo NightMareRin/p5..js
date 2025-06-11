@@ -212,19 +212,23 @@ function setup() {
     
     let boyWalk = new SceneObject("boyS8", boyS8, 1400, 100, 300, 600);
     boyWalk.altImg = boy2S8;
+    boyWalk.altImg5 = boy3S8;
+    boyWalk.altImg6 = boy4S8;
+    boyWalk.altImg7 = boyS9;
+    boyWalk.altImg8 = boy2S9;
     scene.addObject(7, boyWalk);
     // scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
-    scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
-    scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
+    // scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
    
     
-    scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
-    scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
+    // scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
+    // scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
     
-    scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(8);
-        loop();
-    }, 1000));
+    // scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
+    //     sceneManager.setSceneNumber(8);
+    //     loop();
+    // }, 1000));
     
     // 10번 씬: 현재로 돌아온 남자
     scene.addObject(8, new SceneObject("room3",room3, 0, 0 , 1600, 900));
