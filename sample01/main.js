@@ -92,7 +92,7 @@ function setup() {
     girl5S7 = spriteSheet7.get(848, 1344, 424, 1344);
 
     boyS8 = spriteSheet8.get(0, 0, 515.5, 1360.5);
-    boy2S8 = spriteSheet8.get(515.5, 0, 550, 1360.5);
+    boy2S8 = spriteSheet8.get(650, 0, 515.5, 1360.5);
     boy3S8 = spriteSheet8.get(0, 1360.5, 515.5, 1360.5);
     boy4S8 = spriteSheet8.get(515.5, 1360.5 , 550, 1360.5);
 
@@ -203,8 +203,10 @@ function setup() {
     scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
     
     
-    scene.addObject(7, new SceneObject("boyS8", boyS8, 600, 60, 100, 200));
-    scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
+    let boyWalk = new SceneObject("boyS8", boyS8, 1400, 60, 300, 600);
+    boyWalk.altImg = boy2S8;
+    scene.addObject(7, boyWalk);
+    // scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
     scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
     scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
    
@@ -230,7 +232,7 @@ function setup() {
     }, 1000));
 
     sceneManager.setScene(scene);
-    sceneManager.setSceneNumber(1);
+    sceneManager.setSceneNumber(7);
 
     // 반드시 이 아래에 래핑!
     const originalSetSceneNumber = sceneManager.setSceneNumber.bind(sceneManager);
