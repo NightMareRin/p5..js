@@ -145,7 +145,7 @@ function setup() {
 
     // 3번 씬:여자아이 뒷모습 바라봄
     scene.addObject(3, new SceneObject("girlS3", girlS3, 800, 60, 200, 600));
-    scene.addObject(3, new SceneObject("boyArm3", boyArm3, 100, 100, 200, 400));
+    scene.addObject(3, new SceneObject("boyArm3", boyArm3, 1400, 100, 200, 400));
     scene.addObject(3, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(4);
     }, 1000));
