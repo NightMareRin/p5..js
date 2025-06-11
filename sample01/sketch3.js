@@ -1,3 +1,5 @@
+//전반적으로 AI의 도움을 받음, 이후 마음에 안드는 수치만 조정
+
 let waitingForSpace = false;
 let showSpaceHint = false;
 let showAHint = true;

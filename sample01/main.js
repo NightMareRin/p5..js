@@ -109,12 +109,10 @@ function setup() {
 
 
 
-
+    //altImg 생성시 AI도움 받음
     // 1번 씬: "후회" 텍스트(중상단), "Start" 버튼(아래)
     scene.addObject(1, new SceneObject("후회", null, width / 2 - 200, height / 2 - 200, 400, 100));
     scene.addObject(1, new SceneButton("Start", null, width / 2 - 100, height / 2, 200, 80,  function() {
-        animeManager.add(this, moveRight); // 버튼에 오른쪽 이동 애니메이션 적용
-        animeManager.add(scene.objectByNumber[1][0], moveRight); // "후회" 오브젝트도 이동
         setTimeout(() => {
             sceneManager.setSceneNumber(2);
         }, 500); // 0.5초 후 씬 전환
@@ -128,26 +126,15 @@ function setup() {
 
     scene.addObject(2, girl2);
     scene.addObject(2, boy2);
-   
-    scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
-        sceneManager.setSceneNumber(3);
-    }, 1000))
 
     // 3번 씬:여자아이 뒷모습 바라봄
     scene.addObject(3, new SceneObject("girlS3", girlS3, 800, 60, 200, 600));
     scene.addObject(3, new SceneObject("boyArm3", boyArm3, 1400, 100, 200, 400));
-    scene.addObject(3, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(4);
-    }, 1000));
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
       let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
    boy4.altImg1 = boy2S4;
- 
-    scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
-        sceneManager.setSceneNumber(5);
-    }, 1000));
 
     // 5번 씬: 성장 몽타주
     let boy5 =  new SceneObject("boyS5", boyS5, 300, 60, 300, 500);
@@ -161,9 +148,6 @@ function setup() {
     girl5.altImg2 = girl3S5;
     girl5.altImg3 = girl4S5;
     scene.addObject(5, girl5);
-    scene.addObject(5, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(6);
-    }, 1000));
 
     // 6번 씬:주인공의 회상
     let boyBackObj = new SceneObject("boyBack6", boyBack6, 300, 360, 300, 300);
@@ -174,10 +158,6 @@ function setup() {
     let drawerObj = new SceneObject("drawer1", drawer1, 300, 60, 300, 300);
     drawerObj.altImg1 = drawer2;
     scene.addObject(6, drawerObj);
-
-    scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(7);
-    }, 1000));
 
     // 7, 8, 9번 씬 통합: if?  학생 시절
     let girl = new SceneObject("girlS7", girlS7, 400, 100, 300, 600);
