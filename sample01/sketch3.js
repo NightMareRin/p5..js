@@ -1,6 +1,4 @@
 let waitingForSpace = false;
-let showSpaceHint = false;
-let showAHint = true;
 class AnimeManager {
   constructor() {
     this.anims = []; // {target, func, done}
@@ -47,18 +45,19 @@ function moveLeftWithWalkAnim(target) {
   if (target._moveFrame === undefined) {
     target._moveFrame = 0;
     target._startX = target.x;
-    target._imgA = target.img;
-    target._imgB = target.altImg;
-    showAHint = false; // A 해제
+    target._imgA = target.img;      // 현재 이미지
+    target._imgB = target.altImg;   // 걷기용 다른 이미지 (main.js에서 altImg로 지정)
   }
+  // 50프레임마다 이미지 교체
   if (Math.floor(target._moveFrame / 50) % 2 === 0) target.img = target._imgA;
   else target.img = target._imgB;
 
-  target.x = target._startX - target._moveFrame * 2;
+  target.x = target._startX - target._moveFrame * 2; // 2px씩 왼쪽 이동
   target._moveFrame++;
 
+  // 목표 좌표 도달 시
   if (target.x <= 1000) {
-    target.img = target._imgA;
+    target.img = target._imgA; // 멈출 때 원래 이미지로
     delete target._moveFrame;
     delete target._startX;
     delete target._imgA;
@@ -70,7 +69,7 @@ function moveLeftWithWalkAnim(target) {
       frame2: 80,
       onFinish: (t) => {
         animeManager.add(sceneManager.scene.objectByNumber[7][1], t => waitForSpaceAndSwap(t,
-          t.altImg5, t.altImg6, 80, 80, (t) =>
+          t.altImg5, t.altImg6, 80, 80, (t) => 
             animeManager.add(t, t => swapTwoImagesInOrder(t, {
               img1: t.altImg7,
               img2: t.altImg8,
@@ -151,12 +150,10 @@ function swapTwoImagesInOrder(target, {
 function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFinish = null) {
   if (!waitingForSpace) {
     waitingForSpace = true;
-    showSpaceHint = true; // SPACE 표시
-    return false;
+    return false; // 아직 끝나지 않음
   }
   if (waitingForSpace === 'ready') {
     waitingForSpace = false;
-    showSpaceHint = false; // SPACE 해제
     animeManager.add(target, t => swapImageOnce(t, {
       newImg: img1,
       frame: frame1,
@@ -177,25 +174,30 @@ function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFin
 function onSceneEnter(sceneNumber, scene) {
   if (sceneNumber === 2) {
    
-  // boy 캐릭터의 이미지 전환 애니메이션
-  animeManager.add(boyS2, t => swapImageOnce(t, {
-    newImg: boy2S2,
-    frame: 20,
-    onFinish: (target) => {
-animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
-    }
-  }));
+ const objs = sceneManager.scene.objectByNumber[2];
+    const boy2 = objs.find(o => o.name === "boyS2");
+    const girl2 = objs.find(o => o.name === "girlS2");
 
-  // girl 캐릭터의 이미지 전환 애니메이션
-  animeManager.add(girlS2, t => swapImageOnce(t, {
-    newImg: girl2S2,
-    frame: 20,
-    onFinish: (target) => {  
-        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+    // boy 이미지 순차 전환
+    animeManager.add(boy2, t => swapImageOnce(t, {
+      newImg: t.altImg1, // boy2S2
+      frame: 40,
+      onFinish: (target) => {
+       
+      }
+    }));
+
+    // girl 이미지 순차 전환
+    animeManager.add(girl2, t => swapImageOnce(t, {
+      newImg: t.altImg1, // girl2S2
+      frame: 40,
+      onFinish: (target) => {
+        }
+    }));
   
-    }
-  }));
-}
+  }
+
+
 
   if (sceneNumber === 4) {
   const boy = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
@@ -205,9 +207,9 @@ animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
     boy,
     t => swapImageOnce(t, {
       newImg: t.altImg,
-      frame: 20,
+      frame: 40,
       onFinish: (target) => {
-        animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
+        
       }
     })
   );
@@ -254,6 +256,34 @@ if (sceneNumber === 5) {
       }
     }));
   }
+
+ if (sceneNumber === 6) {
+    const objs = sceneManager.scene.objectByNumber[6];
+    const boyBackObj = objs.find(o => o.name === "boyBack6");
+    const drawerObj = objs.find(o => o.name === "drawer1");
+
+    // 처음엔 boyBack6, drawer1만 보이게
+    boyBackObj.visible = true;
+    drawerObj.visible = true;
+
+    // boyBack6 → boyArm6
+    animeManager.add(boyBackObj, t => swapImageOnce(t, {
+      newImg: t.altImg1, // boyArm6
+      frame: 40,
+      onFinish: (target) => {
+        // boyArm6 → boy6
+        animeManager.add(target, t2 => swapImageOnce(t2, {
+          newImg: t2.altImg2, // boy6
+          frame: 40
+        }));
+        // drawer1 → drawer2 (동시에 시작)
+        animeManager.add(drawerObj, t3 => swapImageOnce(t3, {
+          newImg: t3.altImg1, // drawer2
+          frame: 40
+        }));
+      }
+    }));
+  }
 }
 
 function keyPressed() {
@@ -263,11 +293,5 @@ function keyPressed() {
   }
   if (key === ' ' || keyCode === 32) {
     if (waitingForSpace) waitingForSpace = 'ready';
-  }
-  if (!isNaN(Number(key)) && key.trim() !== "") {
-    const num = Number(key);
-    if (sceneManager && sceneManager.setSceneNumber) {
-      sceneManager.setSceneNumber(num);
-    }
   }
 }
