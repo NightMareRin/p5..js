@@ -18,10 +18,9 @@ function preload() {
     spriteSheet13 = loadImage('../image01/assets/KakaoTalk_20250609_135759284.jpg');
     spriteSheet14 = loadImage('../image01/assets/KakaoTalk_20250609_135759284_01.jpg');
     spriteSheet15 = loadImage('../image01/assets/KakaoTalk_20250609_141249636.jpg');
-     //서랍
+    //서랍
     sprtireSheet16 = loadImage('../image01/assets/Screenshot_20250609_140443_Samsung Notes.png');
-    spriteSheet17 = loadImage('../image01/assets/Screenshot_20250609_140501_Samsung Notes.png');
-
+    spriteSheet17 = loadImage('../image01/assets/Screenshot_20250609_140501_Samsung Notes.png')
 }
 
 function setup() {
@@ -44,7 +43,6 @@ function setup() {
     let boyS8, boy2S8, boy3S8, boy4S8;
     let boyS9, boy2S9, boy3S9, letter;
     let boyS10, boy2S10, boy3S10;
-    let drawer1, drawer2;
 
     img = sourceImage.get(0, 0, width/2, height/2);
 
@@ -87,6 +85,7 @@ function setup() {
     room3 = spriteSheet15.get(0, 0, 1174, 876 );
     drawer1 = sprtireSheet16.get(0, 0 , 648, 800);
     drawer2 = spriteSheet17.get(0, 0, 727, 713);
+
 // 이지후
 
     girlS7 = spriteSheet7.get(0, 0, 424, 1344);
@@ -121,6 +120,21 @@ function setup() {
             sceneManager.setSceneNumber(2);
         }, 500); // 0.5초 후 씬 전환
     }, 0));
+    scene.addObject(1, new SceneDraggable(
+        "드래그로 넘기기", // 이름
+        null,             // 이미지 (없으면 null)
+        width / 2 - 100,  // x
+        height / 2 + 120, // y (Start 버튼 아래쪽 등 원하는 위치)
+        200,              // w
+        80,               // h
+        (dir, obj) => {   // onDragAction: 오른쪽 드래그 성공 시 실행
+          if (dir === "right") {
+            sceneManager.setSceneNumber(2);
+          }
+        },
+        100,              // dragDistance: 최소 드래그 거리(px)
+        "right"           // allowedDirection: 오른쪽만 허용
+      ));
 
     // 2번 씬: 7살
     scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 60, 300, 400));
@@ -162,8 +176,9 @@ function setup() {
     scene.addObject(5, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(6);
     }, 1000));
-
+    
     // 6번 씬:주인공의 회상
+    
     let boyBackObj = new SceneObject("boyBack6", boyBack6, 300, 360, 300, 300);
     boyBackObj.altImg1 = boyArm6;
     boyBackObj.altImg2 = boy6;
@@ -184,19 +199,28 @@ function setup() {
     girl.altImg3 = girl4S7;
     girl.altImg4 = girl5S7;
     scene.addObject(7, girl);
+    // scene.addObject(7, new SceneObject("girl2S7", girl2S7, 200, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl3S7", girl3S7, 300, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl4S7", girl4S7, 400, 60, 100, 200));
+    // scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
+
+    
     
     let boyWalk = new SceneObject("boyS8", boyS8, 1400, 100, 300, 600);
     boyWalk.altImg = boy2S8;
-    boyWalk.altImg5 = boy3S8;
-    boyWalk.altImg6 = boy4S8;
-    boyWalk.altImg7 = boyS9;
-    boyWalk.altImg8 = boy2S9;
     scene.addObject(7, boyWalk);
+    // scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
+    scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
+    scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
+   
     
-    // scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
-    //     sceneManager.setSceneNumber(8);
-    //     loop();
-    // }, 1000));
+    scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
+    scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
+    
+    scene.addObject(7, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
+        sceneManager.setSceneNumber(8);
+        loop();
+    }, 1000));
     
     // 10번 씬: 현재로 돌아온 남자
     scene.addObject(8, new SceneObject("room3",room3, 0, 0 , 1600, 900));
@@ -211,7 +235,7 @@ function setup() {
     }, 1000));
 
     sceneManager.setScene(scene);
-    sceneManager.setSceneNumber(7);
+    sceneManager.setSceneNumber(1);
 
     // 반드시 이 아래에 래핑!
     const originalSetSceneNumber = sceneManager.setSceneNumber.bind(sceneManager);
@@ -234,20 +258,10 @@ function draw() {
     else {
         sceneManager.display();
     }
-    // --- 힌트 표시 ---
-    fill(255, 255, 0);
-    textSize(48);
-    textAlign(CENTER, BOTTOM);
-    if (showSpaceHint) {
-        text("SPACE", width / 2, height - 60);
-    }
-    if (sceneManager.sceneNumber === 7 && showAHint) {
-        text("A", width / 2, height - 120);
-    }
-
     fill(255);
     noStroke();
     textSize(32);
     textAlign(LEFT, TOP);
     text(`Scene Number: ${sceneManager.sceneNumber}`, 20, 20);    
 }
+
