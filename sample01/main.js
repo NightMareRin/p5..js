@@ -18,7 +18,9 @@ function preload() {
     spriteSheet13 = loadImage('../image01/assets/KakaoTalk_20250609_135759284.jpg');
     spriteSheet14 = loadImage('../image01/assets/KakaoTalk_20250609_135759284_01.jpg');
     spriteSheet15 = loadImage('../image01/assets/KakaoTalk_20250609_141249636.jpg');
-    
+     //서랍
+    sprtireSheet16 = loadImage('../image01/assets/Screenshot_20250609_140443_Samsung Notes.png');
+    spriteSheet17 = loadImage('../image01/assets/Screenshot_20250609_140501_Samsung Notes.png');
 
 }
 
@@ -82,7 +84,8 @@ function setup() {
     room1 = spriteSheet13.get(0, 0, 1387, 1051);
     room2 = spriteSheet14.get(0, 0, 1186, 876);
     room3 = spriteSheet15.get(0, 0, 1174, 876 );
-
+    drawer1 = sprtireSheet16.get(0, 0 , 648, 800);
+    drawer2 = spriteSheet17.get(0, 0, 727, 713);
 // 이지후
 
     girlS7 = spriteSheet7.get(0, 0, 424, 1344);
