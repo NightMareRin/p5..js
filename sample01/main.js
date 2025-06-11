@@ -123,11 +123,11 @@ function setup() {
     }, 0));
 
     // 2번 씬: 7살
-        let boy2 =  new SceneObject("boyS2", boyS2,  100, 60, 300, 400);
-    boy2.altImg1 = boy2S2;
-        let girl2 =  new SceneObject("girlS2", girlS2,  100, 60, 300, 400);
-    girl2.altImg1 = girl2S2;
-   
+    scene.addObject(2, new SceneObject("boyS2", boyS2, 100, 60, 300, 400));
+    scene.addObject(2, new SceneObject("boy2S2", boy2S2, 100, 60, 400, 400));
+
+    scene.addObject(2, new SceneObject("girlS2", girlS2, 1200, 60, 300, 400));
+    scene.addObject(2, new SceneObject("girl2S2", girl2S2, 1200, 60, 300, 400));
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(3);
     }, 1000))
@@ -141,11 +141,8 @@ function setup() {
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
-
-     let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
-    boy4.altImg1 = boy2S4;
-    
-    
+    scene.addObject(4, new SceneObject("boyS4", boyS4, 300, 60, 300, 400));
+    scene.addObject(4, new SceneObject("boy2S4", boy2S4, 700, 60, 300, 400));
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(5);
     }, 1000));
