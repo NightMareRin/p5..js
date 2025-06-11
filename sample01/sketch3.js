@@ -186,14 +186,14 @@ function onSceneEnter(sceneNumber, scene) {
     // boy 이미지 순차 전환
     animeManager.add(boy2, t => swapImageOnce(t, {
       newImg: t.altImg1, // boy2S2
-      frame: 40,
+      frame: 40
      
     }));
 
     // girl 이미지 순차 전환
     animeManager.add(girl2, t => swapImageOnce(t, {
       newImg: t.altImg1, // girl2S2
-      frame: 40,
+      frame: 40
       
     }));
   
