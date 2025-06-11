@@ -55,11 +55,12 @@ function moveLeftWithWalkAnim(target) {
   if (Math.floor(target._moveFrame / 50) % 2 === 0) target.img = target._imgA;
   else target.img = target._imgB;
 
-  target.x = target._startX - target._moveFrame * 2;
+  target.x = target._startX - target._moveFrame * 2; // 2px씩 왼쪽 이동
   target._moveFrame++;
 
+  // 목표 좌표 도달 시
   if (target.x <= 1000) {
-    target.img = target._imgA;
+    target.img = target._imgA; // 멈출 때 원래 이미지로
     delete target._moveFrame;
     delete target._startX;
     delete target._imgA;
@@ -71,7 +72,7 @@ function moveLeftWithWalkAnim(target) {
       frame2: 80,
       onFinish: (t) => {
         animeManager.add(sceneManager.scene.objectByNumber[7][1], t => waitForSpaceAndSwap(t,
-          t.altImg5, t.altImg6, 80, 80, (t) =>
+          t.altImg5, t.altImg6, 80, 80, (t) => 
             animeManager.add(t, t => swapTwoImagesInOrder(t, {
               img1: t.altImg7,
               img2: t.altImg8,
