@@ -210,8 +210,6 @@ animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
   );
 }
 
-    
-  }
 if (sceneNumber === 5) {
     const objs = sceneManager.scene.objectByNumber[5];
     const boy5 = objs.find(o => o.name === "boyS5");

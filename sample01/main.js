@@ -159,7 +159,7 @@ function setup() {
     }, 1000));
 
     // 5번 씬: 성장 몽타주
- let boy5 =  new SceneObject("boyS5", boyS5, 300, 60, 300, 500);
+    let boy5 =  new SceneObject("boyS5", boyS5, 300, 60, 300, 500);
     boy5.altImg1 = boy2S5;
     boy5.altImg2 = boy3S5;
     boy5.altImg3 = boy4S5;
@@ -194,12 +194,6 @@ function setup() {
     girl.altImg3 = girl4S7;
     girl.altImg4 = girl5S7;
     scene.addObject(7, girl);
-    // scene.addObject(7, new SceneObject("girl2S7", girl2S7, 200, 60, 100, 200));
-    // scene.addObject(7, new SceneObject("girl3S7", girl3S7, 300, 60, 100, 200));
-    // scene.addObject(7, new SceneObject("girl4S7", girl4S7, 400, 60, 100, 200));
-    // scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
-
-    
     
     let boyWalk = new SceneObject("boyS8", boyS8, 1400, 100, 300, 600);
     boyWalk.altImg = boy2S8;
@@ -208,13 +202,6 @@ function setup() {
     boyWalk.altImg7 = boyS9;
     boyWalk.altImg8 = boy2S9;
     scene.addObject(7, boyWalk);
-    // scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
-    // scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
-    // scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
-   
-    
-    // scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
-    // scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
     
     // scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
     //     sceneManager.setSceneNumber(8);
@@ -234,7 +221,7 @@ function setup() {
     }, 1000));
 
     sceneManager.setScene(scene);
-    sceneManager.setSceneNumber(7);
+    sceneManager.setSceneNumber(1);
 
     // 반드시 이 아래에 래핑!
     const originalSetSceneNumber = sceneManager.setSceneNumber.bind(sceneManager);
