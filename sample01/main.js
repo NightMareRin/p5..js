@@ -159,26 +159,17 @@ function setup() {
     }, 1000));
 
     // 5번 씬: 성장 몽타주
-    scene.addObject(5, new SceneObject("boyS5", boyS5, 100, 60, 100, 200));
-    scene.addObject(5, new SceneObject("girlS5", girlS5, 200, 60, 100, 200));
-    scene.addObject(5, new SceneObject("friendMs1", friendMs1, 300, 60, 100, 200));
+ let boy5 =  new SceneObject("boyS5", boyS5, 300, 60, 300, 500);
+    boy5.altImg1 = boy2S5;
+    boy5.altImg2 = boy3S5;
+    boy5.altImg3 = boy4S5;
+    scene.addObject(5, boy5);
 
-    scene.addObject(5, new SceneObject("boy2S5", boy2S5, 400, 60, 100, 200));
-    scene.addObject(5, new SceneObject("girl2S5", girl2S5, 500, 60, 100, 200));
-    scene.addObject(5, new SceneObject("friendMs2", friendMs2, 600, 100, 100, 200));
-
-    scene.addObject(5, new SceneObject("boy3S5", boy3S5, 700, 60, 100, 200));
-    scene.addObject(5, new SceneObject("girl3S5", girl3S5, 800, 60, 100, 200));
-
-    scene.addObject(5, new SceneObject("friendBoyHs1", friendBoyHs1, 100, 400, 100, 200));
-    scene.addObject(5, new SceneObject("friendBoyHs2", friendBoyHs2, 200, 400, 100, 200 ));
-
-    scene.addObject(5, new SceneObject("friendGirlHs1", friendGirlHs1, 300, 400, 100, 200));
-    scene.addObject(5, new SceneObject("friendGirlHs2", friendGirlHs2, 400, 400, 100, 200));
-
-    scene.addObject(5, new SceneObject("boy4S5", boy4S5, 500, 400, 100, 200));
-    scene.addObject(5, new SceneObject("girl4S5", girl4S5, 600, 400, 100, 200));
-    scene.addObject(5, new SceneObject("friend", friend, 700, 400, 100, 200));
+    let girl5 = new SceneObject("girlS5", girlS5, 900, 60, 300, 500);
+    girl5.altImg1 = girl2S5;
+    girl5.altImg2 = girl3S5;
+    girl5.altImg3 = girl4S5;
+    scene.addObject(5, girl5);
     scene.addObject(5, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(6);
     }, 1000));

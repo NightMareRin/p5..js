@@ -212,6 +212,48 @@ animeManager.add(target, nextAnimFunc); // 다음 애니메이션 실행
 
     
   }
+if (sceneNumber === 5) {
+    const objs = sceneManager.scene.objectByNumber[5];
+    const boy5 = objs.find(o => o.name === "boyS5");
+    const girl5 = objs.find(o => o.name === "girlS5");
+
+    // boy 이미지 순차 전환
+    animeManager.add(boy5, t => swapImageOnce(t, {
+      newImg: t.altImg1, // boy2S5
+      frame: 40,
+      onFinish: (target) => {
+        animeManager.add(target, t2 => swapImageOnce(t2, {
+          newImg: t2.altImg2, // boy3S5
+          frame: 40,
+          onFinish: (target2) => {
+            animeManager.add(target2, t3 => swapImageOnce(t3, {
+              newImg: t3.altImg3, // boy4S5
+              frame: 40
+            }));
+          }
+        }));
+      }
+    }));
+
+    // girl 이미지 순차 전환
+    animeManager.add(girl5, t => swapImageOnce(t, {
+      newImg: t.altImg1, // girl2S5
+      frame: 40,
+      onFinish: (target) => {
+        animeManager.add(target, t2 => swapImageOnce(t2, {
+          newImg: t2.altImg2, // girl3S5
+          frame: 40,
+          onFinish: (target2) => {
+            animeManager.add(target2, t3 => swapImageOnce(t3, {
+              newImg: t3.altImg3, // girl4S5
+              frame: 40
+            }));
+          }
+        }));
+      }
+    }));
+  }
+}
 
 function keyPressed() {
   if ((key === 'a' || key === 'A' || keyCode === LEFT_ARROW) && sceneManager.sceneNumber === 7) {
