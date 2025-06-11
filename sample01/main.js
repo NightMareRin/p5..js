@@ -125,7 +125,7 @@ function setup() {
     // 2번 씬: 7살
         let boy2 =  new SceneObject("boyS2", boyS2,  100, 60, 300, 400);
     boy2.altImg1 = boy2S2;
-        let girl2 =  new SceneObject("girlS2", girlS2,  100, 60, 300, 400);
+        let girl2 =  new SceneObject("girlS2", girlS2,  700, 60, 300, 400);
     girl2.altImg1 = girl2S2;
    
     scene.addObject(2, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
