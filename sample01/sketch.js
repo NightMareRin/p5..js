@@ -60,6 +60,7 @@ class Scene {
     let objs = this.objectByNumber[sceneNumber];
     if (!objs) return;
     for (let obj of objs) {
+      
       if (obj.released) obj.released();
     }
   }
@@ -101,18 +102,13 @@ class SceneManager {
 }
 
 class SceneObject {
-  constructor(name, img, x, y) {
+  constructor(name, img, x, y, w, h) {
     this.name = name;
     this.img = img;
     this.x = x;
     this.y = y;
-    if (img) {
-      this.w = img.width;
-      this.h = img.height;
-    } else {
-      this.w = 100;
-      this.h = 100;
-    }
+    this.w = w;
+    this.h = h;
   }
 
   display() {
@@ -131,8 +127,8 @@ class SceneObject {
 }
 
 class SceneButton extends SceneObject {
-  constructor(name, img, x, y, onClick, delay = 0) {
-    super(name, img, x, y);
+  constructor(name, img, x, y, w, h, onClick, delay = 0) {
+    super(name, img, x, y, w, h);
     this.onClick = onClick;
     this.delay = delay;
     this.guide = new GuideWaveButton(this.x + this.w / 2, this.y + this.h / 2, Math.min(this.w, this.h) * 0.8);
@@ -166,8 +162,9 @@ class SceneButton extends SceneObject {
   }
 }
 class SceneDraggable extends SceneObject {
-  constructor(name, img, x, y, onDragAction = null, dragDistance = 100, allowedDirection = "right") {
-    super(name, img, x, y);
+  
+  constructor(name, img, x, y, w, h, onDragAction = null, dragDistance = 100, allowedDirection = "right") {
+    super(name, img, x, y, w, h);
     this.dragging = false;
     this.offsetX = 0;
     this.offsetY = 0;
@@ -176,8 +173,9 @@ class SceneDraggable extends SceneObject {
     this.onDragAction = onDragAction;
     this.dragDistance = dragDistance;
     this._dragged = false;
-    this.allowedDirection = allowedDirection;
+    this.allowedDirection = allowedDirection; // ← 추가
   }
+
 
   display() {
     if (this.img) {
@@ -209,6 +207,7 @@ class SceneDraggable extends SceneObject {
   }
 
   dragged(mx, my) {
+    
     if (!this.dragging) return;
     // 드래그 방향 및 거리 계산
     const dx = mx - this.startX;
@@ -254,4 +253,3 @@ class SceneDraggable extends SceneObject {
     }
   }
 }
-
