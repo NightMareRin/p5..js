@@ -175,13 +175,14 @@ function setup() {
     }, 1000));
 
     // 6번 씬:주인공의 회상
-    scene.addObject(6, new SceneObject("room1", room1, 0, 0, 1600, 900));
-    scene.addObject(6, new SceneObject("room2", room2, 0 , 0, 1600, 900));
-    scene.addObject(6, new SceneObject("boyBack6", boyBack6, 600, 60, 300, 300));
-    scene.addObject(6, new SceneObject("boyArm6", boyArm6, 200, 400, 200, 500));
-    scene.addObject(6, new SceneObject("boy6", boy6, 100, 60, 300, 200));
-    
+    let boyBackObj = new SceneObject("boyBack6", boyBack6, 300, 360, 300, 300);
+    boyBackObj.altImg1 = boyArm6;
+    boyBackObj.altImg2 = boy6;
+    scene.addObject(6, boyBackObj);
 
+    let drawerObj = new SceneObject("drawer1", drawer1, 300, 60, 300, 300);
+    drawerObj.altImg1 = drawer2;
+    scene.addObject(6, drawerObj);
 
     scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(7);
