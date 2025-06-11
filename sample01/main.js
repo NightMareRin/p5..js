@@ -211,8 +211,7 @@ function setup() {
     
     scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
     scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
-    scene.addObject(7, new SceneObject("boy3S9", boy3S9, 300, 400, 100, 200));
-    scene.addObject(7, new SceneObject("letter", letter, 400, 400, 100, 200));
+    
     scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(8);
         loop();
@@ -223,6 +222,8 @@ function setup() {
     scene.addObject(8, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
     scene.addObject(8, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
     scene.addObject(8, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
+    scene.addObject(8, new SceneObject("boy3S9", boy3S9, 1000, 400, 400, 420));
+    scene.addObject(8, new SceneObject("letter", letter, 600, 500, 100, 200));
     scene.addObject(8, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(9);
         loop();
