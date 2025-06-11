@@ -141,7 +141,7 @@ function swapTwoImagesInOrder(target, {
     delete target._swap2Frame;
     delete target._originalImg;
     delete target._swappedOnce;
-    if (onFinish) () => onFinish(target);
+    if (onFinish) onFinish(target);
     return true;
   }
   return false;
