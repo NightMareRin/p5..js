@@ -224,7 +224,11 @@ function setup() {
 }
 
 function draw() {
-    background(100);
+    if (sceneManager.sceneNumber === 7) {
+        background(200, 180, 190); // 분홍빛
+    } else {
+        background(100);
+    }
 
     animeManager.update();
 
