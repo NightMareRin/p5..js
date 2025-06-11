@@ -1,6 +1,4 @@
 let waitingForSpace = false;
-let showSpaceHint = false;
-let showAHint = true;
 class AnimeManager {
   constructor() {
     this.anims = []; // {target, func, done}
@@ -47,18 +45,19 @@ function moveLeftWithWalkAnim(target) {
   if (target._moveFrame === undefined) {
     target._moveFrame = 0;
     target._startX = target.x;
-    target._imgA = target.img;
-    target._imgB = target.altImg;
-    showAHint = false; // A 해제
+    target._imgA = target.img;      // 현재 이미지
+    target._imgB = target.altImg;   // 걷기용 다른 이미지 (main.js에서 altImg로 지정)
   }
+  // 50프레임마다 이미지 교체
   if (Math.floor(target._moveFrame / 50) % 2 === 0) target.img = target._imgA;
   else target.img = target._imgB;
 
-  target.x = target._startX - target._moveFrame * 2;
+  target.x = target._startX - target._moveFrame * 2; // 2px씩 왼쪽 이동
   target._moveFrame++;
 
+  // 목표 좌표 도달 시
   if (target.x <= 1000) {
-    target.img = target._imgA;
+    target.img = target._imgA; // 멈출 때 원래 이미지로
     delete target._moveFrame;
     delete target._startX;
     delete target._imgA;
@@ -70,7 +69,7 @@ function moveLeftWithWalkAnim(target) {
       frame2: 80,
       onFinish: (t) => {
         animeManager.add(sceneManager.scene.objectByNumber[7][1], t => waitForSpaceAndSwap(t,
-          t.altImg5, t.altImg6, 80, 80, (t) =>
+          t.altImg5, t.altImg6, 80, 80, (t) => 
             animeManager.add(t, t => swapTwoImagesInOrder(t, {
               img1: t.altImg7,
               img2: t.altImg8,
@@ -151,12 +150,10 @@ function swapTwoImagesInOrder(target, {
 function waitForSpaceAndSwap(target, img1, img2, frame1 = 30, frame2 = 30, onFinish = null) {
   if (!waitingForSpace) {
     waitingForSpace = true;
-    showSpaceHint = true; // SPACE 표시
-    return false;
+    return false; // 아직 끝나지 않음
   }
   if (waitingForSpace === 'ready') {
     waitingForSpace = false;
-    showSpaceHint = false; // SPACE 해제
     animeManager.add(target, t => swapImageOnce(t, {
       newImg: img1,
       frame: frame1,
