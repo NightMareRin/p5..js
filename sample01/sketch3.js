@@ -203,10 +203,10 @@ function onSceneEnter(sceneNumber, scene) {
 
   if (sceneNumber === 4) {
   const boy4 = scene.objectByNumber[4].find(obj => obj.name === "boyS4");
-  boy4.altImg = boy2S4; // 교체 이미지 등록
+  boy4.altImg1 = boy2S4; // 교체 이미지 등록
 
   animeManager.add( boy4,  t => swapImageOnce(t, {
-      newImg: t.altImg,
+      newImg: t.altImg1,
       frame: 40
      
     })
