@@ -146,7 +146,6 @@ function setup() {
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
     scene.addObject(4, new SceneObject("boyS4", boyS4, 300, 60, 300, 400));
     scene.addObject(4, new SceneObject("boy2S4", boy2S4, 700, 60, 300, 400));
-    scene.addObject(4, boy4);
     scene.addObject(4, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
         sceneManager.setSceneNumber(5);
     }, 1000));
@@ -204,15 +203,11 @@ function setup() {
     
     // 10번 씬: 현재로 돌아온 남자
     scene.addObject(8, new SceneObject("room3",room3, 0, 0 , 1600, 900));
-    scene.addObject(8, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
+    // scene.addObject(8, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
     scene.addObject(8, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
     scene.addObject(8, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
-    scene.addObject(8, new SceneObject("boy3S9", boy3S9, 1000, 400, 400, 420));
+    // scene.addObject(8, new SceneObject("boy3S9", boy3S9, 1000, 400, 400, 420));
     scene.addObject(8, new SceneObject("letter", letter, 600, 500, 100, 200));
-    scene.addObject(8, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(9);
-        loop();
-    }, 1000));
 
     sceneManager.setScene(scene);
     sceneManager.setSceneNumber(1);
