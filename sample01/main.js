@@ -185,6 +185,7 @@ function setup() {
 
     // 6번 씬:주인공의 회상
     scene.addObject(6, new SceneObject("room1", room1, 0, 0, 1600, 900));
+    scene.addObject(6, new SceneObject("room2", room2, 0 , 0, 1600, 900));
     scene.addObject(6, new SceneObject("boyBack6", boyBack6, 600, 60, 300, 300));
     scene.addObject(6, new SceneObject("boyArm6", boyArm6, 200, 400, 200, 500));
     scene.addObject(6, new SceneObject("boy6", boy6, 100, 60, 300, 200));
@@ -194,40 +195,36 @@ function setup() {
     scene.addObject(6, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,  () => {
         sceneManager.setSceneNumber(7);
     }, 1000));
-    // 7번 씬: if? 여자 주인공 학생 시절
-    scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 60, 180, 450));
-    scene.addObject(7, new SceneObject("girl2S7", girl2S7, 500, 60, 180, 450));
-    scene.addObject(7, new SceneObject("girl3S7", girl3S7, 900, 60, 180, 450));
-    scene.addObject(7, new SceneObject("girl4S7", girl4S7, 200, 450, 180, 450));
-    scene.addObject(7, new SceneObject("girl5S7", girl5S7, 800, 450, 180, 450));
-    scene.addObject(7, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
-        sceneManager.setSceneNumber(8);
-    }, 1000));
-    // 8번 씬: if? 남자 주인공 학생 시절
-    scene.addObject(8, new SceneObject("boyS8", boyS8, 200, 60, 200, 430));
-    scene.addObject(8, new SceneObject("boy2S8", boy2S8, 1000, 60, 200, 420));
-    scene.addObject(8, new SceneObject("boy3S8", boy3S8, 200, 450, 200 , 470));
-    scene.addObject(8, new SceneObject("boy4S8", boy4S8, 1000, 450, 200,470));
-    scene.addObject(8, new SceneButton("next", null, width / 2 - 100, height / 2, 200, 80,   () => {
-        sceneManager.setSceneNumber(9);
-    }, 1000));
-    // 9번 씬: if? 편지를 전달했다면?
-    scene.addObject(9, new SceneObject("room2", room2, 0, 0 , 1600, 900));
-    scene.addObject(9, new SceneObject("boyS9", boyS9, 200, 100, 200, 430));
-    scene.addObject(9, new SceneObject("boy2S9", boy2S9, 800, 100, 200, 430));
-    scene.addObject(9, new SceneObject("boy3S9", boy3S9, 600, 450, 400, 450));
-    scene.addObject(9, new SceneObject("letter", letter, 200, 500, 50, 100));
+    // 7, 8, 9번 씬 통합: if?  학생 시절
+    scene.addObject(7, new SceneObject("girlS7", girlS7, 100, 60, 100, 200));
+    scene.addObject(7, new SceneObject("girl2S7", girl2S7, 200, 60, 100, 200));
+    scene.addObject(7, new SceneObject("girl3S7", girl3S7, 300, 60, 100, 200));
+    scene.addObject(7, new SceneObject("girl4S7", girl4S7, 400, 60, 100, 200));
+    scene.addObject(7, new SceneObject("girl5S7", girl5S7, 500, 60, 100, 200));
+    
+    
+    scene.addObject(7, new SceneObject("boyS8", boyS8, 600, 60, 100, 200));
+    scene.addObject(7, new SceneObject("boy2S8", boy2S8, 700, 60, 100, 200));
+    scene.addObject(7, new SceneObject("boy3S8", boy3S8, 800, 60, 100 , 200));
+    scene.addObject(7, new SceneObject("boy4S8", boy4S8, 900, 60, 100, 200));
    
-    scene.addObject(9, new SceneButton("next", null, width / 2 - 100, height / 2,  200, 80, () => {
-        sceneManager.setSceneNumber(10);
+    
+    scene.addObject(7, new SceneObject("boyS9", boyS9, 100, 400, 100, 200));
+    scene.addObject(7, new SceneObject("boy2S9", boy2S9, 200, 400, 100, 200));
+    scene.addObject(7, new SceneObject("boy3S9", boy3S9, 300, 400, 100, 200));
+    scene.addObject(7, new SceneObject("letter", letter, 400, 400, 100, 200));
+    scene.addObject(7, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
+        sceneManager.setSceneNumber(8);
+        loop();
     }, 1000));
+    
     // 10번 씬: 현재로 돌아온 남자
-    scene.addObject(10, new SceneObject("room3", room3, 0, 0 , 1600, 900));
-    scene.addObject(10, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
-    scene.addObject(10, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
-    scene.addObject(10, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
-    scene.addObject(10, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
-        sceneManager.setSceneNumber(11);
+    scene.addObject(8, new SceneObject("room3",room3, 0, 0 , 1600, 900));
+    scene.addObject(8, new SceneObject("boyS10", boyS10, 400, 100, 400, 420));
+    scene.addObject(8, new SceneObject("boy2S10", boy2S10, 200, 450, 150, 450 ));
+    scene.addObject(8, new SceneObject("boy3S10", boy3S10, 900, 450, 150, 450));
+    scene.addObject(8, new SceneButton("Credit", null, width / 2 - 100, height / 2, 200, 80,  () => {
+        sceneManager.setSceneNumber(9);
         loop();
     }, 1000));
 
@@ -249,7 +246,7 @@ function draw() {
 
     animeManager.update();
 
-    if (sceneManager.sceneNumber === 11) {
+    if (sceneManager.sceneNumber === 9) {
         showCredits();
     }
     else {
@@ -261,4 +258,3 @@ function draw() {
     textAlign(LEFT, TOP);
     text(`Scene Number: ${sceneManager.sceneNumber}`, 20, 20);    
 }
-
