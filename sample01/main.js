@@ -244,6 +244,17 @@ function draw() {
     else {
         sceneManager.display();
     }
+    // --- 힌트 표시 ---
+    fill(255, 255, 0);
+    textSize(48);
+    textAlign(CENTER, BOTTOM);
+    if (showSpaceHint) {
+        text("SPACE", width / 2, height - 60);
+    }
+    if (sceneManager.sceneNumber === 7 && showAHint) {
+        text("A", width / 2, height - 120);
+    }
+
     fill(255);
     noStroke();
     textSize(32);
