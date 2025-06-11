@@ -102,7 +102,7 @@ function setup() {
 
     boyS9 = spriteSheet9.get(0, 0, 630, 1280);
     boy2S9 = spriteSheet9.get(630, 0, 645, 1280);
-    letter = spriteSheet9.get(0, 1300, 150, 100);
+    letter = spriteSheet9.get(0, 1300, 300, 250);
 
     boy2S10 = spriteSheet10.get(0, 910, 545, 1804);
     boy3S10 = spriteSheet10.get(585, 910, 585, 1804);
@@ -133,8 +133,9 @@ function setup() {
 
 
     // 4번 씬: 남자아이 러브레터 전달하려다 맘
-      let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
-   boy4.altImg1 = boy2S4;
+    let boy4 =  new SceneObject("boyS4", boyS4,  300, 60, 300, 400);
+    boy4.altImg1 = boy2S4;
+    scene.addObject(4, boy4);
 
     // 5번 씬: 성장 몽타주
     let boy5 =  new SceneObject("boyS5", boyS5, 300, 60, 300, 500);
@@ -180,7 +181,7 @@ function setup() {
     let boyObj = new SceneObject("boy2S10", boy2S10, 500, 200, 300, 900);
     boyObj.altImg = boy3S10;
     scene.addObject(8, boyObj);
-    scene.addObject(8, new SceneObject("letter", letter, 600, 500, 100, 200));
+    scene.addObject(8, new SceneObject("letter", letter, 1000, 300, 100, 200));
 
     sceneManager.setScene(scene);
     sceneManager.setSceneNumber(1);

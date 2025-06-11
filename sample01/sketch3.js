@@ -26,25 +26,6 @@ class AnimeManager {
 // 전역 animeManager 인스턴스
 const animeManager = new AnimeManager();
 
-
-function moveRight(target) {
-  console.log("moveRight 실행", target.x);
-  if (target._moveFrame === undefined) {
-    target._moveFrame = 0;
-    target._startX = target.x;
-  }
-  target.x = target._startX + (target._moveFrame / 60) * 200;
-  target._moveFrame++;
-  if (target._moveFrame >= 60) {
-    target.x = target._startX + 200;
-    delete target._moveFrame;
-    delete target._startX;
-
-    return true;
-  }
-  return false;
-}
-
 function moveLeftWithWalkAnim(target) {
   if (target._moveFrame === undefined) {
     target._moveFrame = 0;
