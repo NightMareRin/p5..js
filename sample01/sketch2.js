@@ -16,6 +16,23 @@ let creditsText = [
 let guideWave;
 let creditsY;        // 시작 y 위치
 let scrollSpeed = 1; // 기본 속도
+//s3가이드?
+
+// 전용 초기화 함수 추가
+function initGuideForScene3(handX, handY, size) {
+  guideWave = new GuideWaveButton(handX, handY, size);
+  guideWave.visible = true;
+}
+
+// draw에서 가이드가 있을 경우만 업데이트
+function draw() {
+  // 배경 또는 씬 렌더링은 main.js에서 처리
+  if (guideWave) {
+    guideWave.updateAndDraw();
+  }
+}
+
+// -------
 
 function setup() {
   textAlign(CENTER, CENTER);
