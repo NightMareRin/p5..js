@@ -326,4 +326,9 @@ function keyPressed() {
       sceneManager.setSceneNumber(num);
     }
   }
+  if (keyCode === RIGHT_ARROW) {
+    if (sceneManager && sceneManager.setSceneNumber) {
+      sceneManager.setSceneNumber(sceneManager.sceneNumber + 1);
+    }
+  }
 }
